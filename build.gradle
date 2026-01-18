@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm'
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = 'de.jerst'
@@ -31,6 +32,7 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
 }
 
 jar {
@@ -46,3 +48,23 @@ jar {
 test {
     useJUnitPlatform()
 }
+
+shadowJar {
+    configurations = [project.configurations.runtimeClasspath]
+
+    dependencies {
+        exclude(dependency('name:HytaleServer'))
+    }
+
+    relocate 'kotlinx.coroutines', 'de.jerst.internal.coroutines'
+
+    archiveClassifier.set('')
+}
+
+task copyToServer(type: Copy) {
+    dependsOn jar
+    from jar.archivePath
+    into 'D:/Entwicklung/Hytale/Server/mods'
+}
+
+build.finalizedBy copyToServer

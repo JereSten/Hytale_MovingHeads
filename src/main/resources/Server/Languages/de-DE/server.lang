@@ -1,0 +1,13 @@
+movingheads.action = Aktionen: create, delete
+movingheads.scenegroup.state.set = State setzen
+movingheads.scenegroup.state.set.success = State gesetzt"
+
+movingheads.scenegroup.name = Szenename
+movingheads.scenegroup.manage = Szenengruppen verwalten
+movingheads.scenegroup.created = Szenengruppe {name} erfolgreich erstellt!
+movingheads.scenegroup.block.add = Block X:{x}, Y:{y}, Z:{z} hinzugefügt!
+movingheads.scenegroup.warning.noname = Kein Szenengruppen angegeben!
+movingheads.scenegroup.warning = Keine Szenengruppe mit diesem Namen vorhanden!
+
+movingheads.warning.player = Nur ein Spieler darf diesen Befehl ausführen!
+movingheads.warning.noblock = Kein Block in Reichweite!
