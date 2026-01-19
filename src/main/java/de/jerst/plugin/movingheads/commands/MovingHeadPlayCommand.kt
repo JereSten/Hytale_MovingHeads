@@ -2,10 +2,7 @@ package de.jerst.plugin.movingheads.commands
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
-import com.hypixel.hytale.math.util.ChunkUtil
-import com.hypixel.hytale.math.vector.Vector3i
 import com.hypixel.hytale.server.core.Message
-import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType
 import com.hypixel.hytale.server.core.command.system.CommandContext
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes
@@ -14,13 +11,13 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
+import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.config.MovingHeadConfig
+import de.jerst.plugin.movingheads.utils.SceneGroupUtil
 import de.jerst.plugin.movingheads.utils.withErrorPrefix
 import de.jerst.plugin.movingheads.utils.withPrefix
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.annotation.Nonnull
 
@@ -59,29 +56,9 @@ class MovingHeadPlayCommand : AbstractTargetPlayerCommand("play", "server.moving
         }
 
         CoroutineScope(Dispatchers.Default).launch {
-                for (block in sceneGroup.blocks!!) {
-                    delay(1000L)
-                    setState(block, world, state)
-                }
+            SceneGroupUtil.play(sceneGroup, state, world)
         }
 
         commandContext.sendMessage(Message.translation("server.movingheads.scenegroup.state.set.success").withPrefix())
-    }
-
-    /**
-     * Set state of block at position
-     * @param position Block position
-     */
-    private fun setState(position: Vector3i, world: World, stateName: String) {
-        val chunckIndex = ChunkUtil.indexChunkFromBlock(position.x, position.z)
-
-        world.getChunkAsync(chunckIndex).thenAccept { chunk ->
-            val blockId: Int = chunk.getBlock(position)
-
-            val blockType = BlockType.getAssetMap().getAsset(blockId)
-            if (blockType != null) {
-                chunk.setBlockInteractionState(position, blockType, stateName)
-            }
-         }
     }
 }

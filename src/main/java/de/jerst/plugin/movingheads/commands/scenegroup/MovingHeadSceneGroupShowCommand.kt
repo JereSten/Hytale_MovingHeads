@@ -13,7 +13,7 @@ import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.config.MovingHeadConfig
+import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.withErrorPrefix
 import de.jerst.plugin.movingheads.utils.withPrefix
 import javax.annotation.Nonnull

@@ -1,0 +1,12 @@
+package de.jerst.plugin.movingheads.commands.animationnode
+
+import com.hypixel.hytale.server.core.command.system.basecommands.AbstractCommandCollection
+
+class MovingHeadAnimationNodeCommand: AbstractCommandCollection("animationnode", "server.movingheads.scenegroup.manage") {
+    init {
+        addAliases("ann")
+
+        addSubCommand(MovingHeadAnimationNodeAddCommand())
+        addSubCommand(MovingHeadAnimationNodeRemoveCommand())
+    }
+}

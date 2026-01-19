@@ -13,8 +13,8 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
-import de.jerst.plugin.movingheads.utils.config.MovingHeadConfig
-import de.jerst.plugin.movingheads.utils.config.SceneGroup
+import de.jerst.plugin.movingheads.model.MovingHeadConfig
+import de.jerst.plugin.movingheads.model.SceneGroup
 import javax.annotation.Nonnull
 
 /**
@@ -47,7 +47,7 @@ class MovingHeadSceneGroupCreateCommand:
         val newSceneryGroup = SceneGroup(name, playerRef.uuid)
 
         val config = configManager.load<MovingHeadConfig>().apply {
-            sceneGroup.add(newSceneryGroup)
+            sceneGroups.add(newSceneryGroup)
         }
         configManager.save(config)
 

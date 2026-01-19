@@ -1,4 +1,4 @@
-package de.jerst.plugin.movingheads.utils.config
+package de.jerst.plugin.movingheads.model
 
 
 import com.hypixel.hytale.math.vector.Vector3i

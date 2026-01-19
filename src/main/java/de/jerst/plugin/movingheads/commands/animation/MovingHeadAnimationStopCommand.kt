@@ -1,4 +1,4 @@
-package de.jerst.plugin.movingheads.commands.scenegroup
+package de.jerst.plugin.movingheads.commands.animation
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
@@ -9,15 +9,11 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
+import de.jerst.plugin.movingheads.utils.AnimationManager
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.withPrefix
 
-/**
- * List all scenegroups of user
- */
-class MovingHeadSceneGroupListCommand :
-    AbstractTargetPlayerCommand("list", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationStopCommand : AbstractTargetPlayerCommand("stop", "server.movingheads.scenegroup.manage") {
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -29,16 +25,10 @@ class MovingHeadSceneGroupListCommand :
         world: World,
         store: Store<EntityStore?>
     ) {
-        val config = configManager.load<MovingHeadConfig>()
+        AnimationManager.stopAnimation(playerRef.uuid)
 
         commandContext.sendMessage(
-            Message.translation("server.movingheads.scenegroup.yours").withPrefix()
+            Message.translation("Your Animation was stopped").withPrefix()
         )
-
-        for (sceneGroup in config.getSceneGroups(playerRef.uuid)) {
-            commandContext.sendMessage(
-                Message.raw("\t- ${sceneGroup.name}")
-            )
-        }
     }
 }

@@ -3,7 +3,7 @@ package de.jerst.plugin.movingheads.utils
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import de.jerst.plugin.movingheads.utils.config.MovingHeadConfig
+import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.createDirectories

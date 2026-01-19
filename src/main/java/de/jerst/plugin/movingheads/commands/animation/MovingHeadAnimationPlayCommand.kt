@@ -1,4 +1,4 @@
-package de.jerst.plugin.movingheads.commands.scenegroup
+package de.jerst.plugin.movingheads.commands.animation
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
@@ -11,17 +11,14 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
-import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.MovingHeadCommandUtil.Companion.validateAndGetTarget
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
-import de.jerst.plugin.movingheads.utils.withPrefix
+import de.jerst.plugin.movingheads.utils.AnimationManager
+import de.jerst.plugin.movingheads.utils.ConfigurationUtil
+import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withErrorPrefix
 import javax.annotation.Nonnull
 
-/**
- * Create new scene group
- */
-class MovingHeadSceneGroupAddCommand:
-    AbstractTargetPlayerCommand("add", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "server.movingheads.scenegroup.manage") {
 
     @Nonnull
     private val nameArg: RequiredArg<String> =
@@ -38,23 +35,19 @@ class MovingHeadSceneGroupAddCommand:
         store: Store<EntityStore?>
     ) {
         val name = commandContext.get<String>(nameArg)
-        val targetBlock = validateAndGetTarget(commandContext, name, store) ?: return
-
         val config = configManager.load<MovingHeadConfig>()
-        val scenegroup = config.sceneGroups.find { it.name == name }
-        if (scenegroup?.blocks == null) {
-            scenegroup!!.blocks = mutableListOf()
+
+        val animation = config.getAnimation(playerRef.uuid, name)
+        if (animation == null) {
+            commandContext.sendMessage(
+                MessageUtil.pluginTMessage(
+                    Message.translation("Playing animation").param("animnation", name).withErrorPrefix()
+                )
+            )
+            return
         }
 
-        scenegroup.blocks?.add(targetBlock)
-        configManager.save(config)
-
-        commandContext.sendMessage(
-            Message.translation("server.movingheads.scenegroup.block.add")
-                .param("x", targetBlock.x)
-                .param("y", targetBlock.y)
-                .param("z", targetBlock.z)
-                .withPrefix()
-        )
+        AnimationManager.startAnimation(config, commandContext, animation, world, playerRef.uuid)
     }
+
 }
