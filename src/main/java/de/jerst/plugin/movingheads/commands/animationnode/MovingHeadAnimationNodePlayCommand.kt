@@ -12,15 +12,17 @@ import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
+import de.jerst.plugin.movingheads.utils.AnimationManager
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.SceneGroupUtil
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationNodePlayCommand: AbstractTargetPlayerCommand("play", "server.movingheads.scenegroup.manage") {
     private val animationNodeNameArg: RequiredArg<String> =
         withRequiredArg<String>("animationnodename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
-
-    private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("scenegroupname", "server.movingheads.scenegroup.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -33,7 +35,6 @@ class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove"
         store: Store<EntityStore?>
     )  {
         val animationNodeName = commandContext.get<String>(animationNodeNameArg)
-        val stateFrameName = commandContext.get<String>(stateFrameNameArg)
 
         val config = configManager.load<MovingHeadConfig>()
         val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
@@ -42,13 +43,10 @@ class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove"
             return
         }
 
-        animationNode.stateFrames.remove(stateFrameName)
-        configManager.save(config)
+        CoroutineScope(Dispatchers.Default).launch {
+            AnimationManager.playAnimationNode(animationNode, config, playerRef.uuid, world)
+        }
 
-        commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", stateFrameName)
-            )
-        )
+        // TODO message
     }
 }

@@ -2,9 +2,10 @@ package de.jerst.plugin.movingheads.model
 
 import java.util.UUID
 
-data class AnimationNode (
+data class StateFrame (
     val playerUUID: UUID,
     val name: String,
-    val wait: Long?,
-    val stateFrames: MutableList<String> = mutableListOf()
+    val sceneGroupName: String,
+    val state: String,
+    val iterations: Int = 1
 )

@@ -5,5 +5,5 @@ import java.util.*
 data class AnimationTrack(
     val playerUUID: UUID,
     val name: String,
-    val animationNodes: MutableList<AnimationNode> = mutableListOf()
+    val animationNodes: MutableList<String> = mutableListOf()
 )

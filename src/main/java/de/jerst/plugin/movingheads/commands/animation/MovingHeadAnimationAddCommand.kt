@@ -1,4 +1,4 @@
-package de.jerst.plugin.movingheads.commands.animationnode
+package de.jerst.plugin.movingheads.commands.animation
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
@@ -11,16 +11,18 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
+import de.jerst.plugin.movingheads.model.AnimationTrack
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 
-class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
-    private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationnodename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+class MovingHeadAnimationAddCommand : AbstractTargetPlayerCommand("add", "server.movingheads.scenegroup.manage") {
 
-    private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("scenegroupname", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+    private val animationNameArg: RequiredArg<String> =
+        withRequiredArg<String>("animationName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+
+    private val animationNodeNameArg: RequiredArg<String> =
+        withRequiredArg<String>("animationNodeName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -31,23 +33,23 @@ class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove"
         playerRef: PlayerRef,
         world: World,
         store: Store<EntityStore?>
-    )  {
+    ) {
+        val animationName = commandContext.get<String>(animationNameArg)
         val animationNodeName = commandContext.get<String>(animationNodeNameArg)
-        val stateFrameName = commandContext.get<String>(stateFrameNameArg)
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
-        if (animationNode == null) {
-            // TODO Error Message
+        val animation = config.getAnimation(playerRef.uuid, animationName)
+        if (animation == null) {
+            // TODO message
             return
         }
 
-        animationNode.stateFrames.remove(stateFrameName)
+        animation.animationNodes.add(animationNodeName)
         configManager.save(config)
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", stateFrameName)
+                Message.translation("server.movingheads.scenegroup.created").param("name", animationName)
             )
         )
     }

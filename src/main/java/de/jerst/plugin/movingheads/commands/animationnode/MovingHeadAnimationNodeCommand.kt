@@ -4,9 +4,12 @@ import com.hypixel.hytale.server.core.command.system.basecommands.AbstractComman
 
 class MovingHeadAnimationNodeCommand: AbstractCommandCollection("animationnode", "server.movingheads.scenegroup.manage") {
     init {
-        addAliases("ann")
+        addAliases("annode")
 
+        addSubCommand(MovingHeadAnimationNodeCreateCommand())
+        addSubCommand(MovingHeadAnimationNodeDeleteCommand())
         addSubCommand(MovingHeadAnimationNodeAddCommand())
         addSubCommand(MovingHeadAnimationNodeRemoveCommand())
+        addSubCommand(MovingHeadAnimationNodePlayCommand())
     }
 }

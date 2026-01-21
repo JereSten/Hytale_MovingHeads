@@ -10,5 +10,7 @@ class MovingHeadAnimationCommand: AbstractCommandCollection("animation", "server
         addSubCommand(MovingHeadAnimationDeleteCommand())
         addSubCommand(MovingHeadAnimationPlayCommand())
         addSubCommand(MovingHeadAnimationStopCommand())
+        addSubCommand(MovingHeadAnimationAddCommand())
+        addSubCommand(MovingHeadAnimationRemoveCommand())
     }
 }

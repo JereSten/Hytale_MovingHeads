@@ -5,6 +5,7 @@ import com.hypixel.hytale.server.core.command.system.basecommands.AbstractComman
 import de.jerst.plugin.movingheads.commands.animation.MovingHeadAnimationCommand
 import de.jerst.plugin.movingheads.commands.animationnode.MovingHeadAnimationNodeCommand
 import de.jerst.plugin.movingheads.commands.scenegroup.MovingHeadSceneGroupCommand
+import de.jerst.plugin.movingheads.commands.stateframe.MovingHeadStateFrameCommand
 
 
 class MovingHeadCommand : AbstractCommandCollection("movinghead", "mh.commands") {
@@ -16,5 +17,6 @@ class MovingHeadCommand : AbstractCommandCollection("movinghead", "mh.commands")
         addSubCommand(MovingHeadPlayCommand() as AbstractCommand)
         addSubCommand(MovingHeadAnimationCommand() as AbstractCommand)
         addSubCommand(MovingHeadAnimationNodeCommand() as AbstractCommand)
+        addSubCommand(MovingHeadStateFrameCommand() as AbstractCommand)
     }
 }

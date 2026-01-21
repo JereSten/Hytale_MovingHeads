@@ -14,13 +14,13 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import javax.annotation.Nonnull
 
-class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
-    private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationnodename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+class MovingHeadAnimationNodeDeleteCommand : AbstractTargetPlayerCommand("delete", "server.movingheads.scenegroup.manage") {
 
-    private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("scenegroupname", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+    @Nonnull
+    private val nameArg: RequiredArg<String> =
+        withRequiredArg<String>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -31,23 +31,23 @@ class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove"
         playerRef: PlayerRef,
         world: World,
         store: Store<EntityStore?>
-    )  {
-        val animationNodeName = commandContext.get<String>(animationNodeNameArg)
-        val stateFrameName = commandContext.get<String>(stateFrameNameArg)
+    ) {
+        val name = commandContext.get<String?>(nameArg)
 
-        val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
-        if (animationNode == null) {
-            // TODO Error Message
+        if (name == null) {
+            commandContext.sendMessage(MessageUtil.pluginMessage("Name missing"))
             return
         }
 
-        animationNode.stateFrames.remove(stateFrameName)
+        val config = configManager.load<MovingHeadConfig>()
+        val animationToDelete = config.getAnimationNode(playerRef.uuid, name)
+        config.animationNodes.remove(animationToDelete)
+
         configManager.save(config)
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", stateFrameName)
+                Message.translation("server.movingheads.scenegroup.created").param("name", name)
             )
         )
     }

@@ -1,9 +1,10 @@
-package de.jerst.plugin.movingheads.commands.animationnode
+package de.jerst.plugin.movingheads.commands.stateframe
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
 import com.hypixel.hytale.server.core.Message
 import com.hypixel.hytale.server.core.command.system.CommandContext
+import com.hypixel.hytale.server.core.command.system.arguments.system.OptionalArg
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractTargetPlayerCommand
@@ -11,16 +12,25 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
+import de.jerst.plugin.movingheads.model.AnimationNode
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
+import de.jerst.plugin.movingheads.model.StateFrame
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 
-class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
-    private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationnodename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+class MovingHeadStateFrameCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.scenegroup.manage") {
 
     private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("scenegroupname", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("stateframename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+
+    private val sceneGroupNameArg: RequiredArg<String> =
+        withRequiredArg<String>("sceneGroupName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+
+    private val stateNameArg: RequiredArg<String> =
+        withRequiredArg<String>("stateName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+
+    private val iterationsArg: OptionalArg<Int> =
+        withOptionalArg<Int>("iterations", "server.movingheads.scenegroup.name", ArgTypes.INTEGER)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -31,18 +41,22 @@ class MovingHeadAnimationNodeRemoveCommand: AbstractTargetPlayerCommand("remove"
         playerRef: PlayerRef,
         world: World,
         store: Store<EntityStore?>
-    )  {
-        val animationNodeName = commandContext.get<String>(animationNodeNameArg)
+    ) {
         val stateFrameName = commandContext.get<String>(stateFrameNameArg)
+        val sceneGroupName = commandContext.get<String>(sceneGroupNameArg)
+        val stateName = commandContext.get<String>(stateNameArg)
+        val iterations = commandContext.get<Int?>(iterationsArg)
+
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
-        if (animationNode == null) {
-            // TODO Error Message
+        if (config.getStateFrame(playerRef.uuid, stateFrameName) != null) {
+            // TODO Message already stateframe already exists
             return
         }
 
-        animationNode.stateFrames.remove(stateFrameName)
+        val newStateFrame = StateFrame(playerRef.uuid, stateFrameName, sceneGroupName, stateName, iterations ?: 1)
+        config.stateFrames.add(newStateFrame)
+
         configManager.save(config)
 
         commandContext.sendMessage(
