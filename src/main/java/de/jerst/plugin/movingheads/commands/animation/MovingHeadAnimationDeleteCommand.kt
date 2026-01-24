@@ -16,11 +16,11 @@ import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 import javax.annotation.Nonnull
 
-class MovingHeadAnimationDeleteCommand : AbstractTargetPlayerCommand("delete", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationDeleteCommand : AbstractTargetPlayerCommand("delete", "server.movingheads.animation.delete") {
 
     @Nonnull
     private val nameArg: RequiredArg<String> =
-        withRequiredArg<String>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("name", "server.movingheads.arg.animation.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -32,13 +32,7 @@ class MovingHeadAnimationDeleteCommand : AbstractTargetPlayerCommand("delete", "
         world: World,
         store: Store<EntityStore?>
     ) {
-        val name = commandContext.get<String?>(nameArg)
-
-        if (name == null) {
-            commandContext.sendMessage(MessageUtil.pluginMessage("Name missing"))
-            return
-        }
-
+        val name = commandContext.get<String>(nameArg)
 
         val config = configManager.load<MovingHeadConfig>()
         val animationToDelete = config.getAnimation(playerRef.uuid, name)
@@ -48,7 +42,7 @@ class MovingHeadAnimationDeleteCommand : AbstractTargetPlayerCommand("delete", "
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", name)
+                Message.translation("server.movingheads.animation.deleted").param("name", name)
             )
         )
     }

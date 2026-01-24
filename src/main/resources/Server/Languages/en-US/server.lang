@@ -1,13 +1,78 @@
-movingheads.action = Actions: create, delete
-movingheads.scenegroup.state.set = Set state
-movingheads.scenegroup.state.set.success = State set successfully
+# === Animation ===
+movingheads.animation.name = Animation management
+movingheads.animation.add = Add animation node to animation
+movingheads.animation.added = Animation node {animationName} assigned to animation {animationNodeName}!
+movingheads.animation.created = Animation {name} created!
+movingheads.animation.create = Create new animation
+movingheads.animation.delete = Delete animation
+movingheads.animation.deleted = Animation {name} deleted!
+movingheads.animation.list = Show list of your animations
+movingheads.animation.list.yours = Your animations:
+movingheads.animation.play = Play animation
+movingheads.animation.playing = Animation {animationName} is playing.
+movingheads.animation.play.notfound = Animation not found!
+movingheads.animation.remove = Remove animation node from animation
+movingheads.animation.removes = Animation node {animationNodeName} removed from animation {animationName}!
+movingheads.animation.stop = Stop animation
+movingheads.animation.stopped = Your running animation has been stopped!
 
+# === Animationnode ===
+movingheads.animationnode.manage = Manage animation nodes
+movingheads.animationnode.add = Assign stateframe to animation node
+movingheads.animationnode.added = Stateframe {stateFrameName} assigned to animation node {animationNodeName}!
+movingheads.animationnode.create = Create new animation node
+movingheads.animationnode.created = Animation node {animationNode} created!
+movingheads.animationnode.delete = Delete animation node
+movingheads.animationnode.deleted = Animation node {animationNodeName} deleted!
+movingheads.animationnode.list = List of your animation nodes
+movingheads.animationnode.yours = Your animation nodes:
+movingheads.animationnode.play = Play animation node
+movingheads.animationnode.play.notfound = Animation node {animationNodeName} not found!
+movingheads.animationnode.playing = Animation node {animationNodeName} is playing.
+movingheads.animationnode.remove = Remove stateframe from animation node
+movingheads.animationnode.removed = Stateframe {stateFrameName} removed from animation node {animationNodeName}!
+
+# === Scenegroup ===
 movingheads.scenegroup.name = Scene name
+movingheads.scenegroup.add = Add block to scene group
 movingheads.scenegroup.manage = Manage scene groups
-movingheads.scenegroup.created = Scene group {name} created successfully!
-movingheads.scenegroup.block.add = Block added at X:{x}, Y:{y}, Z:{z}!
+movingheads.scenegroup.yours = Your scene groups:
+movingheads.scenegroup.create = Create new scene group
+movingheads.scenegroup.created = Scene group {name} successfully created!
+movingheads.scenegroup.delete = Delete scene group
+movingheads.scenegroup.deleted = Scene group {name} deleted!
+movingheads.scenegroup.list = List of your scene groups
+movingheads.scenegroup.block.add = Block X:{x}, Y:{y}, Z:{z} added!
+movingheads.scenegroup.block.remove = Block X:{x}, Y:{y}, Z:{z} removed!
 movingheads.scenegroup.warning.noname = No scene group specified!
 movingheads.scenegroup.warning = No scene group with this name exists!
+movingheads.scenegroup.show = Selected blocks of the scene group will be marked blue.
+movingheads.scenegroup.nonexistent = This scene group does not exist!
+movingheads.scenegroup.remove = Remove block from scene group
+movingheads.scenegroup.play = Play scene group.
+movingheads.scenegroup.playing = Scene group {name} is playing.
 
-movingheads.warning.player = Only a player may execute this command!
-movingheads.warning.noblock = No block within reach!
+# === StateFrame ===
+movingheads.stateframe.manage = Manage stateframes
+movingheads.stateframe.create = Create stateframe
+movingheads.stateframe.created = Stateframe {name} created!
+movingheads.stateframe.delete = Delete stateframe
+movingheads.stateframe.deleted = Stateframe {name} deleted!
+movingheads.stateframe.list = List of your stateframes
+movingheads.stateframe.yours = Your stateframes:
+
+movingheads.warning.player = Only a player can execute this command!
+movingheads.warning.noblock = No block in range!
+
+# === Arguments ===
+movingheads.arg.animation.name = Animation name
+movingheads.arg.animationnode.name = Animation node
+movingheads.arg.animationnode.wait = Wait time
+movingheads.arg.animationnode.add.name = Animation node to assign to this animation
+movingheads.arg.stateframe.add.name = Stateframe to assign to animation node
+movingheads.arg.stateframe.name = Stateframe
+movingheads.arg.scenegroup.name = Scene group
+movingheads.arg.statename.name = State
+movingheads.arg.iterations.name = Iterations
+
+mh.commands = Moving Heads control

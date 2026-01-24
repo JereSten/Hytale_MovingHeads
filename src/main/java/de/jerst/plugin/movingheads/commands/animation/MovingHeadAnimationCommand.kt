@@ -2,7 +2,7 @@ package de.jerst.plugin.movingheads.commands.animation
 
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractCommandCollection
 
-class MovingHeadAnimationCommand: AbstractCommandCollection("animation", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationCommand: AbstractCommandCollection("animation", "server.movingheads.animation.name") {
     init {
         addAliases("an")
 
@@ -12,5 +12,6 @@ class MovingHeadAnimationCommand: AbstractCommandCollection("animation", "server
         addSubCommand(MovingHeadAnimationStopCommand())
         addSubCommand(MovingHeadAnimationAddCommand())
         addSubCommand(MovingHeadAnimationRemoveCommand())
+        addSubCommand(MovingHeadAnimationListCommand())
     }
 }

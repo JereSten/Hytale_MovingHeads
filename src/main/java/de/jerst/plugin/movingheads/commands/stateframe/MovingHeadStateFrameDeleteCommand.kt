@@ -16,11 +16,11 @@ import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 import javax.annotation.Nonnull
 
-class MovingHeadStateFrameDeleteCommand : AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
+class MovingHeadStateFrameDeleteCommand : AbstractTargetPlayerCommand("delete", "server.movingheads.stateframe.delete") {
 
     @Nonnull
     private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("stateframename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("stateFrameName", "servermovingheads.arg.statename.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -42,7 +42,7 @@ class MovingHeadStateFrameDeleteCommand : AbstractTargetPlayerCommand("remove", 
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", name)
+                Message.translation("server.movingheads.stateframe.deleted").param("name", name)
             )
         )
     }

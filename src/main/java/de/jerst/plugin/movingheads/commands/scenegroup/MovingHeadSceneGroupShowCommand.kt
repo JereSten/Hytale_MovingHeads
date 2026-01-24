@@ -23,7 +23,7 @@ import javax.annotation.Nonnull
  * Show selected blocks of scene group using particles
  */
 class MovingHeadSceneGroupShowCommand:
-    AbstractTargetPlayerCommand("show", "server.movingheads.scenegroup.manage") {
+    AbstractTargetPlayerCommand("show", "server.movingheads.scenegroup.show") {
 
     @Nonnull
     private val nameArg: RequiredArg<String?> =

@@ -16,13 +16,14 @@ import de.jerst.plugin.movingheads.utils.AnimationManager
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 import de.jerst.plugin.movingheads.utils.withErrorPrefix
+import de.jerst.plugin.movingheads.utils.withPrefix
 import javax.annotation.Nonnull
 
-class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "server.movingheads.animation.play") {
 
     @Nonnull
     private val nameArg: RequiredArg<String> =
-        withRequiredArg<String>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("name", "server.movingheads.arg.animation.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -41,13 +42,19 @@ class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "serv
         if (animation == null) {
             commandContext.sendMessage(
                 MessageUtil.pluginTMessage(
-                    Message.translation("Playing animation").param("animnation", name).withErrorPrefix()
+                    Message.translation("server.movingheads.animation.play.notfound ").param("animnation", name).withErrorPrefix()
                 )
             )
             return
         }
 
         AnimationManager.startAnimation(config, commandContext, animation, world, playerRef.uuid)
+
+        commandContext.sendMessage(
+            MessageUtil.pluginTMessage(
+                Message.translation("server.movingheads.animation.playing").param("animnation", name).withPrefix()
+            )
+        )
     }
 
 }

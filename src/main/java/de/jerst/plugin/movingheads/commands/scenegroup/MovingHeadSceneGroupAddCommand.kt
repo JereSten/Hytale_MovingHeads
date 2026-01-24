@@ -21,7 +21,7 @@ import javax.annotation.Nonnull
  * Create new scene group
  */
 class MovingHeadSceneGroupAddCommand:
-    AbstractTargetPlayerCommand("add", "server.movingheads.scenegroup.manage") {
+    AbstractTargetPlayerCommand("add", "server.movingheads.scenegroup.add") {
 
     @Nonnull
     private val nameArg: RequiredArg<String> =

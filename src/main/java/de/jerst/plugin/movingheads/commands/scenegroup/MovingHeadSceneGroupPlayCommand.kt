@@ -1,4 +1,4 @@
-package de.jerst.plugin.movingheads.commands
+package de.jerst.plugin.movingheads.commands.scenegroup
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
@@ -21,13 +21,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.annotation.Nonnull
 
-class MovingHeadPlayCommand : AbstractTargetPlayerCommand("play", "server.movingheads.scenegroup.state.set") {
+class MovingHeadSceneGroupPlayCommand : AbstractTargetPlayerCommand("play", "server.movingheads.scenegroup.play") {
     @Nonnull
     private val nameArg: RequiredArg<String?> =
         withRequiredArg<String?>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
     private val stateArg: RequiredArg<String?> = withRequiredArg<String?>("state", "", ArgTypes.STRING)
 
-    var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
+    var configManager: ConfigurationUtil = MovingHeadsPlugin.Companion.INSTANCE.config
 
     /**
      * Set state to scenery group
@@ -44,7 +44,9 @@ class MovingHeadPlayCommand : AbstractTargetPlayerCommand("play", "server.moving
         val state = commandContext.get<String?>(stateArg)
 
         if (name == null || state == null) {
-            commandContext.sendMessage(Message.translation("server.movingheads.scenegroup.warning.noname").withErrorPrefix())
+            commandContext.sendMessage(
+                Message.translation("server.movingheads.scenegroup.warning.noname").withErrorPrefix()
+            )
             return
         }
 
@@ -56,9 +58,13 @@ class MovingHeadPlayCommand : AbstractTargetPlayerCommand("play", "server.moving
         }
 
         CoroutineScope(Dispatchers.Default).launch {
-            SceneGroupUtil.play(sceneGroup, state, world)
+            SceneGroupUtil.Companion.play(sceneGroup, state, world)
         }
 
-        commandContext.sendMessage(Message.translation("server.movingheads.scenegroup.state.set.success").withPrefix())
+        commandContext.sendMessage(
+            Message.translation("server.movingheads.scenegroup.playing")
+                .param("name", name)
+                .withPrefix()
+        )
     }
 }

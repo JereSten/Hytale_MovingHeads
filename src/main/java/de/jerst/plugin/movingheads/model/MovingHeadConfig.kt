@@ -26,11 +26,11 @@ data class MovingHeadConfig(
         return animationTracks.filter { it.playerUUID == playerUid}
     }
 
-    fun getAnimationNode(playerUid: UUID, name: String): AnimationNode? {
+    fun getAnimationNodes(playerUid: UUID, name: String): AnimationNode? {
         return animationNodes.find { it.playerUUID == playerUid && it.name == name}
     }
 
-    fun getAnimationNode(playerUid: UUID): List<AnimationNode> {
+    fun getAnimationNodes(playerUid: UUID): List<AnimationNode> {
         return animationNodes.filter { it.playerUUID == playerUid}
     }
 

@@ -16,13 +16,13 @@ import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 
-class MovingHeadAnimationRemoveCommand : AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationRemoveCommand : AbstractTargetPlayerCommand("remove", "server.movingheads.animation.remove") {
 
     private val animationNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("animationName", "server.movingheads.arg.animation.name", ArgTypes.STRING)
 
     private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationNodeName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("animationNodeName", "server.movingheads.arg.animationnode.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -49,7 +49,7 @@ class MovingHeadAnimationRemoveCommand : AbstractTargetPlayerCommand("remove", "
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", animationName)
+                Message.translation("server.movingheads.scenegroup.created").param("animationName", animationName).param("animationNodeName", animationNodeName)
             )
         )
     }

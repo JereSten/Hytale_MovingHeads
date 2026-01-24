@@ -13,7 +13,7 @@ import de.jerst.plugin.movingheads.utils.AnimationManager
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.withPrefix
 
-class MovingHeadAnimationStopCommand : AbstractTargetPlayerCommand("stop", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationStopCommand : AbstractTargetPlayerCommand("stop", "server.movingheads.animation.stop") {
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -28,7 +28,7 @@ class MovingHeadAnimationStopCommand : AbstractTargetPlayerCommand("stop", "serv
         AnimationManager.stopAnimation(playerRef.uuid)
 
         commandContext.sendMessage(
-            Message.translation("Your Animation was stopped").withPrefix()
+            Message.translation("server.movingheads.animation.stopped").withPrefix()
         )
     }
 }

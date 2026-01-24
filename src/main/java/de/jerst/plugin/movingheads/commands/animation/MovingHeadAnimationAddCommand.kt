@@ -11,18 +11,17 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
-import de.jerst.plugin.movingheads.model.AnimationTrack
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 
-class MovingHeadAnimationAddCommand : AbstractTargetPlayerCommand("add", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationAddCommand : AbstractTargetPlayerCommand("add", "server.movingheads.animation.add") {
 
     private val animationNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("animationName", "server.movingheads.arg.animation.name", ArgTypes.STRING)
 
     private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationNodeName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("animationNodeName", "server.movingheads.arg.animationnode.add.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -49,7 +48,7 @@ class MovingHeadAnimationAddCommand : AbstractTargetPlayerCommand("add", "server
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", animationName)
+                Message.translation("server.movingheads.animation.added").param("animationName", animationName).param("animationNodeName", animationNodeName)
             )
         )
     }

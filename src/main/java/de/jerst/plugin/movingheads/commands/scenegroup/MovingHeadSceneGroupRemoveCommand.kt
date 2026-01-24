@@ -22,7 +22,7 @@ import javax.annotation.Nonnull
  * Remove Block from scenery group
  */
 class MovingHeadSceneGroupRemoveCommand:
-    AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.manage") {
+    AbstractTargetPlayerCommand("remove", "server.movingheads.scenegroup.remove") {
 
     @Nonnull
     private val nameArg: RequiredArg<String?> =

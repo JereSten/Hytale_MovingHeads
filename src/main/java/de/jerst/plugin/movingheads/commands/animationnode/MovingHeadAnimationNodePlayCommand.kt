@@ -14,15 +14,15 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.AnimationManager
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.MessageUtil
-import de.jerst.plugin.movingheads.utils.SceneGroupUtil
+import de.jerst.plugin.movingheads.utils.withErrorPrefix
+import de.jerst.plugin.movingheads.utils.withPrefix
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MovingHeadAnimationNodePlayCommand: AbstractTargetPlayerCommand("play", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationNodePlayCommand: AbstractTargetPlayerCommand("play", "server.movingheads.animationnode.play") {
     private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationnodename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("animationNodeName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -37,9 +37,13 @@ class MovingHeadAnimationNodePlayCommand: AbstractTargetPlayerCommand("play", "s
         val animationNodeName = commandContext.get<String>(animationNodeNameArg)
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
+        val animationNode = config.getAnimationNodes(playerRef.uuid, animationNodeName)
         if (animationNode == null) {
-            // TODO Error Message
+            commandContext.sendMessage(
+                Message.translation("server.movingheads.animationnode.play.notfound")
+                    .param("animationNodeName", animationNodeName)
+                    .withErrorPrefix()
+            )
             return
         }
 
@@ -47,6 +51,10 @@ class MovingHeadAnimationNodePlayCommand: AbstractTargetPlayerCommand("play", "s
             AnimationManager.playAnimationNode(animationNode, config, playerRef.uuid, world)
         }
 
-        // TODO message
+        commandContext.sendMessage(
+            Message.translation("server.movingheads.animationnode.playing")
+                .param("animationNodeName", animationNodeName)
+                .withPrefix()
+        )
     }
 }

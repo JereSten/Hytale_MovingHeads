@@ -20,12 +20,12 @@ import javax.annotation.Nonnull
 /**
  * Create new scene group
  */
-class MovingHeadSceneGroupCreateCommand:
-    AbstractTargetPlayerCommand("create", "server.movingheads.scenegroup.create") {
+class MovingHeadSceneGroupDeleteCommand :
+    AbstractTargetPlayerCommand("delete", "server.movingheads.scenegroup.delete") {
 
     @Nonnull
-    private val nameArg: RequiredArg<String?> =
-        withRequiredArg<String?>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+    private val nameArg: RequiredArg<String> =
+        withRequiredArg<String>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -37,23 +37,19 @@ class MovingHeadSceneGroupCreateCommand:
         world: World,
         store: Store<EntityStore?>
     ) {
-        val name = commandContext.get<String?>(nameArg)
+        val name = commandContext.get<String>(nameArg)
 
-        if (name == null) {
-            commandContext.sendMessage(MessageUtil.pluginMessage("Name missing"))
-            return
-        }
 
-        val newSceneryGroup = SceneGroup(name, playerRef.uuid)
+        val config = configManager.load<MovingHeadConfig>()
 
-        val config = configManager.load<MovingHeadConfig>().apply {
-            sceneGroups.add(newSceneryGroup)
-        }
+        val sceneGroupToDelete = config.getOrCreateSceneGroup(playerRef.uuid, name)
+        config.sceneGroups.remove(sceneGroupToDelete)
+
         configManager.save(config)
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", name)
+                Message.translation("server.movingheads.scenegroup.deleted").param("name", name)
             )
         )
     }

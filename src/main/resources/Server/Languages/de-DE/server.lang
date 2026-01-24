@@ -1,17 +1,78 @@
-movingheads.action = Aktionen: create, delete
-movingheads.scenegroup.state.set = State setzen
-movingheads.scenegroup.state.set.success = State gesetzt
+# === Animation ===
+movingheads.animation.name = Verwaltung der Animationen
+movingheads.animation.add = Animationnode zur Animation hinzufügen
+movingheads.animation.added = Animationnode {animationName} wurde der Animation {animationNodeName} zugewiesen!
+movingheads.animation.created = Animation {name} wurde erstellt!
+movingheads.animation.create = Neue Animation erstellen
+movingheads.animation.delete = Animation löschen
+movingheads.animation.deleted = Animation {name} gelöscht!
+movingheads.animation.list = Auflistung deiner Animationen anzeigen
+movingheads.animation.list.yours = Deine Animationen:
+movingheads.animation.play = Animation abspielen
+movingheads.animation.playing = Animation {animationName} wird abgespielt.
+movingheads.animation.play.notfound = Animation konnte nicht gefunden werden!
+movingheads.animation.remove = Animationnode von der Animation entfernen
+movingheads.animation.removes = Animationnode {animationNodeName} wurde von der Animation {animationName} entfernt!
+movingheads.animation.stop = Animation anhalten
+movingheads.animation.stopped = Deine laufende Animation wurde gestoppt!
 
+# === Animationnode ===
+movingheads.animationnode.manage = Animationnodes verwalten
+movingheads.animationnode.add = Stateframe einer Animationnode zuweisen
+movingheads.animationnode.added = Stateframe {stateFrameName} wurde der Animationnode {animationNodeName} zugeordnet!
+movingheads.animationnode.create = Neue Animationnode erstellen
+movingheads.animationnode.created = Animationnode {animationNode} wurde erstellt!
+movingheads.animationnode.delete = Animationnode löschen
+movingheads.animationnode.deleted = Animationnode {animationNodeName} wurde gelöscht!
+movingheads.animationnode.list = Auflistung deiner AnimationNodes
+movingheads.animationnode.yours = Deine AnimationNodes:
+movingheads.animationnode.play = Animationnode abspielen
+movingheads.animationnode.play.notfound = Animationnode {animationNodeName} wurde nicht gefunden!
+movingheads.animationnode.playing = Animationnode {animationNodeName} wird abgespielt.
+movingheads.animationnode.remove = Stateframe von Animationnode entfernen
+movingheads.animationnode.removed = Stateframe {stateFrameName} von Animationnode {animationNodeName} entfernt!
+
+# === Scenegroup ===
 movingheads.scenegroup.name = Szenename
+movingheads.scenegroup.add = Block zur Szenengruppe hinzufügen
 movingheads.scenegroup.manage = Szenengruppen verwalten
 movingheads.scenegroup.yours = Deine Szenengruppen:
+movingheads.scenegroup.create = Neue Szenengruppe erstellen
 movingheads.scenegroup.created = Szenengruppe {name} erfolgreich erstellt!
+movingheads.scenegroup.delete = Szenengruppe löschen
+movingheads.scenegroup.deleted = Szenengruppe {name} gelöscht!
+movingheads.scenegroup.list = Auflistung deiner Szenengruppen
 movingheads.scenegroup.block.add = Block X:{x}, Y:{y}, Z:{z} hinzugefügt!
 movingheads.scenegroup.block.remove = Block X:{x}, Y:{y}, Z:{z} entfernt!
-movingheads.scenegroup.warning.noname = Kein Szenengruppen angegeben!
+movingheads.scenegroup.warning.noname = Keine Szenengruppe angegeben!
 movingheads.scenegroup.warning = Keine Szenengruppe mit diesem Namen vorhanden!
-movingheads.scenegroup.show = Die selektierten Blöcke werden blau markiert.
+movingheads.scenegroup.show = Die selektierten Blöcke der Szenengruppe werden blau markiert.
 movingheads.scenegroup.nonexistent = Diese Szenengruppe existiert nicht!
+movingheads.scenegroup.remove = Block aus Szenengruppe entfernen
+movingheads.scenegroup.play = Szenengruppe abspielen
+movingheads.scenegroup.playing = Szenengruppe {name} wird abgespielt.
+
+# === StateFrame ===
+movingheads.stateframe.manage = Stateframes verwalten
+movingheads.stateframe.create = Stateframe erstellen
+movingheads.stateframe.created = Stateframe {name} erstellt!
+movingheads.stateframe.delete = Stateframe löschen
+movingheads.stateframe.deleted = Stateframe {name} gelöscht!
+movingheads.stateframe.list = Auflistung deiner Stateframes
+movingheads.stateframe.yours = Deine Stateframes:
 
 movingheads.warning.player = Nur ein Spieler darf diesen Befehl ausführen!
 movingheads.warning.noblock = Kein Block in Reichweite!
+
+# === Arguments ===
+movingheads.arg.animation.name = Name der Animation
+movingheads.arg.animationnode.name = Animationnode
+movingheads.arg.animationnode.wait = Wartezeit
+movingheads.arg.animationnode.add.name = Animationnode, die dieser Animation zugeordnet werden soll
+movingheads.arg.stateframe.add.name = Stateframe, das einer Animationnode zugewiesen werden soll
+movingheads.arg.stateframe.name = Stateframe
+movingheads.arg.scenegroup.name = Szenengruppe
+movingheads.arg.statename.name = State
+movingheads.arg.iterations.name = Iterationen
+
+mh.commands = Steuerung Moving Heads

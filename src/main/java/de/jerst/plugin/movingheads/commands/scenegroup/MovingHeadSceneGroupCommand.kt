@@ -13,5 +13,7 @@ class MovingHeadSceneGroupCommand :
         addSubCommand(MovingHeadSceneGroupShowCommand())
         addSubCommand(MovingHeadSceneGroupRemoveCommand())
         addSubCommand(MovingHeadSceneGroupListCommand())
+        addSubCommand(MovingHeadSceneGroupDeleteCommand())
+        addSubCommand(MovingHeadSceneGroupPlayCommand())
     }
 }

@@ -32,7 +32,7 @@ object AnimationManager {
         val job = CoroutineScope(Dispatchers.Default + SupervisorJob()).launch {
             try {
                 for (animationNodeName in animation.animationNodes) {
-                    val animationNode = config.getAnimationNode(player, animationNodeName) ?: continue
+                    val animationNode = config.getAnimationNodes(player, animationNodeName) ?: continue
 
                     playAnimationNode(animationNode, config, player, world)
 

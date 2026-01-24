@@ -18,19 +18,19 @@ import de.jerst.plugin.movingheads.model.StateFrame
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 
-class MovingHeadStateFrameCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.scenegroup.manage") {
+class MovingHeadStateFrameCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.stateframe.create") {
 
     private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("stateframename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("stateframename", "server.movingheads.arg.stateframe.name", ArgTypes.STRING)
 
     private val sceneGroupNameArg: RequiredArg<String> =
-        withRequiredArg<String>("sceneGroupName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("sceneGroupName", "server.movingheads.arg.scenegroup.name", ArgTypes.STRING)
 
     private val stateNameArg: RequiredArg<String> =
-        withRequiredArg<String>("stateName", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("stateName", "server.movingheads.arg.statename.name", ArgTypes.STRING)
 
     private val iterationsArg: OptionalArg<Int> =
-        withOptionalArg<Int>("iterations", "server.movingheads.scenegroup.name", ArgTypes.INTEGER)
+        withOptionalArg<Int>("iterations", "server.movingheads.arg.iterations.name", ArgTypes.INTEGER)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 

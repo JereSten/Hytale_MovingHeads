@@ -15,12 +15,12 @@ import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 
-class MovingHeadAnimationNodeAddCommand: AbstractTargetPlayerCommand("add", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationNodeAddCommand : AbstractTargetPlayerCommand("add", "server.movingheads.animationnode.add") {
     private val animationNodeNameArg: RequiredArg<String> =
-        withRequiredArg<String>("animationnodename", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("animationNodeName", "server.movingheads.arg.animationnode.name", ArgTypes.STRING)
 
     private val stateFrameNameArg: RequiredArg<String> =
-        withRequiredArg<String>("scenegroupname", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("stateFrameName", "server.movingheads.arg.stateframe.add.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -31,12 +31,12 @@ class MovingHeadAnimationNodeAddCommand: AbstractTargetPlayerCommand("add", "ser
         playerRef: PlayerRef,
         world: World,
         store: Store<EntityStore?>
-    )  {
+    ) {
         val animationNodeName = commandContext.get<String>(animationNodeNameArg)
         val stateFrameName = commandContext.get<String>(stateFrameNameArg)
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
+        val animationNode = config.getAnimationNodes(playerRef.uuid, animationNodeName)
         if (animationNode == null) {
             // TODO Error Message
             return
@@ -47,7 +47,9 @@ class MovingHeadAnimationNodeAddCommand: AbstractTargetPlayerCommand("add", "ser
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", stateFrameName)
+                Message.translation("server.movingheads.animationnode.added")
+                    .param("animationNodeName", animationNodeName)
+                    .param("stateFrameName", stateFrameName)
             )
         )
     }

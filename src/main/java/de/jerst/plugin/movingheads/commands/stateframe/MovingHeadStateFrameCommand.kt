@@ -2,11 +2,12 @@ package de.jerst.plugin.movingheads.commands.stateframe
 
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractCommandCollection
 
-class MovingHeadStateFrameCommand: AbstractCommandCollection("stateframe", "server.movingheads.scenegroup.manage") {
+class MovingHeadStateFrameCommand: AbstractCommandCollection("stateframe", "server.movingheads.stateframe.manage") {
     init {
         addAliases("sf")
 
         addSubCommand(MovingHeadStateFrameCreateCommand())
         addSubCommand(MovingHeadStateFrameDeleteCommand())
+        addSubCommand(MovingHeadStateFrameListCommand())
     }
 }

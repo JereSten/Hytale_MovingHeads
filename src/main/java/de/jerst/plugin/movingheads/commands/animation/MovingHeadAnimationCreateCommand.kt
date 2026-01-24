@@ -17,11 +17,11 @@ import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 import javax.annotation.Nonnull
 
-class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.scenegroup.manage") {
+class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.animation.create") {
 
     @Nonnull
     private val nameArg: RequiredArg<String> =
-        withRequiredArg<String>("name", "server.movingheads.scenegroup.name", ArgTypes.STRING)
+        withRequiredArg<String>("name", "server.movingheads.arg.animation.name", ArgTypes.STRING)
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -49,7 +49,7 @@ class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "
 
         commandContext.sendMessage(
             MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", name)
+                Message.translation("server.movingheads.animation.created").param("name", name)
             )
         )
     }

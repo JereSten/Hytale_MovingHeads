@@ -1,4 +1,4 @@
-package de.jerst.plugin.movingheads.commands.scenegroup
+package de.jerst.plugin.movingheads.commands.stateframe
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
@@ -9,16 +9,11 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
-import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
+import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.withPrefix
 
-/**
- * List all scenegroups of user
- */
-class MovingHeadSceneGroupListCommand :
-    AbstractTargetPlayerCommand("list", "server.movingheads.scenegroup.list") {
-
+class MovingHeadStateFrameListCommand : AbstractTargetPlayerCommand("list", "server.movingheads.stateframe.list") {
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
     override fun execute(
@@ -32,10 +27,10 @@ class MovingHeadSceneGroupListCommand :
         val config = configManager.load<MovingHeadConfig>()
 
         commandContext.sendMessage(
-            Message.translation("server.movingheads.scenegroup.yours").withPrefix()
+            Message.translation("server.movingheads.stateframe.yours").withPrefix()
         )
 
-        for (sceneGroup in config.getSceneGroups(playerRef.uuid)) {
+        for (sceneGroup in config.getStateFrames(playerRef.uuid)) {
             commandContext.sendMessage(
                 Message.raw("\t- ${sceneGroup.name}")
             )
