@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.0
+## v0.1.0
 
 ### Added or Changed
 - 4 working Moving heads for stage left and right
