@@ -12,11 +12,9 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
-import de.jerst.plugin.movingheads.model.AnimationNode
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.model.StateFrame
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.MessageUtil
 import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadStateFrameCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.stateframe.create") {

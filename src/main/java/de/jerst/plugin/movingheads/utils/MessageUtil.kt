@@ -12,17 +12,7 @@ class MessageUtil {
             return Message.join(
                 Message.raw("[MovingHeads] ").color(Color.CYAN),
                 Message.raw(message).color(Color.WHITE)
-            );
-        }
-
-        /**
-         * Formatted Plugin Message
-         */
-        fun pluginTMessage(message: Message): Message {
-            return Message.join(
-                Message.raw("[MovingHeads] ").color(Color.CYAN),
-                message
-            );
+            )
         }
     }
 }

@@ -11,10 +11,8 @@ import com.hypixel.hytale.server.core.universe.PlayerRef
 import com.hypixel.hytale.server.core.universe.world.World
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.MovingHeadsPlugin
-import de.jerst.plugin.movingheads.model.AnimationTrack
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.MessageUtil
 import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadAnimationRemoveCommand : AbstractTargetPlayerCommand("remove", "server.movingheads.animation.remove") {

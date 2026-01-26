@@ -15,7 +15,6 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.model.SoundEvent
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.MessageUtil
 import de.jerst.plugin.movingheads.utils.withErrorPrefix
 import de.jerst.plugin.movingheads.utils.withPrefix
 
@@ -45,7 +44,7 @@ class MovingHeadAnimationNodeAddSoundCommand :
     ) {
         val animationNodeName = commandContext.get<String>(animationNodeNameArg)
         val soundName = commandContext.get<String>(soundNameArg)
-        val soundPosition = commandContext.get<Vector3i>(positionArg);
+        val soundPosition = commandContext.get<Vector3i>(positionArg)
 
         val config = configManager.load<MovingHeadConfig>()
 

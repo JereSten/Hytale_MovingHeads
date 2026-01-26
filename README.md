@@ -186,7 +186,11 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- LICENSE -->
+## Build
+
+1. Create `libs`-Folder
+2. Add `HytaleServer.jar` to this directory
+3. Build with `gradle build`
 
 ## License
 
