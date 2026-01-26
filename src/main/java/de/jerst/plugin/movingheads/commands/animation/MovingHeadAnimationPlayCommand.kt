@@ -41,9 +41,7 @@ class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "serv
         val animation = config.getAnimation(playerRef.uuid, name)
         if (animation == null) {
             commandContext.sendMessage(
-                MessageUtil.pluginTMessage(
-                    Message.translation("server.movingheads.animation.play.notfound ").param("animnation", name).withErrorPrefix()
-                )
+                    Message.translation("server.movingheads.animation.play.notfound").withErrorPrefix()
             )
             return
         }
@@ -51,9 +49,7 @@ class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "serv
         AnimationManager.startAnimation(config, commandContext, animation, world, playerRef.uuid)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.animation.playing").param("animnation", name).withPrefix()
-            )
+                Message.translation("server.movingheads.animation.playing").param("animationName", name).withPrefix()
         )
     }
 

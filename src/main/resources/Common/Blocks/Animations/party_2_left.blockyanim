@@ -1,0 +1,35 @@
+{
+  "formatVersion": 1,
+  "duration": 1980,
+  "holdLastKeyframe": true,
+  "nodeAnimations": {
+    "Holder": {
+      "position": [],
+      "orientation": [
+        { "time": 0, "delta": {"x": 0, "y": 0, "z": 0, "w": 1}, "interpolationType": "smooth" },
+        { "time": 360, "delta": {"x": 0, "y": 0, "z": 0, "w": 1}, "interpolationType": "smooth" },
+        { "time": 600, "delta": {"x": 0, "y": -0.90631, "z": 0, "w": 0.42262}, "interpolationType": "smooth" },
+        { "time": 900, "delta": {"x": 0, "y": -0.89687, "z": 0, "w": -0.44229}, "interpolationType": "smooth" },
+        { "time": 1145, "delta": {"x": 0, "y": -0.55557, "z": 0, "w": 0.83147}, "interpolationType": "smooth" },
+        { "time": 1563, "delta": {"x": 0, "y": -0.38268, "z": 0, "w": 0.92388}, "interpolationType": "smooth" },
+        { "time": 1740, "delta": {"x": 0, "y": -0.89687, "z": 0, "w": 0.44229}, "interpolationType": "smooth" },
+        { "time": 1865, "delta": {"x": 0, "y": -0.5, "z": 0, "w": 0.86603}, "interpolationType": "smooth" },
+        { "time": 1980, "delta": {"x": 0, "y": 0, "z": 0, "w": 1}, "interpolationType": "smooth" }
+      ],
+      "shapeStretch": [], "shapeVisible": [], "shapeUvOffset": []
+    },
+    "Spot": {
+      "position": [],
+      "orientation": [
+        { "time": 0, "delta": {"x": 0, "y": 0, "z": 0, "w": 1}, "interpolationType": "smooth" },
+        { "time": 360, "delta": {"x": 0, "y": 0, "z": -0.9763, "w": 0.21644}, "interpolationType": "smooth" },
+        { "time": 600, "delta": {"x": 0, "y": 0, "z": -0.27983, "w": 0.96005}, "interpolationType": "smooth" },
+        { "time": 900, "delta": {"x": 0, "y": 0, "z": -0.27983, "w": 0.96005}, "interpolationType": "smooth" },
+        { "time": 1143, "delta": {"x": 0, "y": 0, "z": 0.30071, "w": 0.95372}, "interpolationType": "smooth" },
+        { "time": 1500, "delta": {"x": 0, "y": 0, "z": -0.34202, "w": 0.93969}, "interpolationType": "smooth" },
+        { "time": 1980, "delta": {"x": 0, "y": 0, "z": 0, "w": 1}, "interpolationType": "smooth" }
+      ],
+      "shapeStretch": [], "shapeVisible": [], "shapeUvOffset": []
+    }
+  }
+}

@@ -2,15 +2,15 @@
   "Group": "de.jerst",
   "Name": "MovingHeadsPlugin",
   "Version": "1.0.0",
-  "Description": "Your plugin description here.",
+  "Description": "Adds working Moving Heads to the game",
   "Authors": [
     {
-      "Name": "Your Name",
-      "Email": "your.email@example.com",
-      "Url": "https://example.com"
+      "Name": "Jerst",
+      "Email": "info@jerst.dev",
+      "Url": "https://jerst.dev/"
     }
   ],
-  "Website": "https://example.com",
+  "Website": "https://github.com/JereSten/Hytale_MovingHeads",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},

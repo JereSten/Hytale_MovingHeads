@@ -14,6 +14,7 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadAnimationNodeRemoveCommand :
     AbstractTargetPlayerCommand("remove", "server.movingheads.animationnode.remove") {
@@ -37,7 +38,7 @@ class MovingHeadAnimationNodeRemoveCommand :
         val stateFrameName = commandContext.get<String>(stateFrameNameArg)
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNodes(playerRef.uuid, animationNodeName)
+        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
         if (animationNode == null) {
             // TODO Error Message
             return
@@ -47,11 +48,10 @@ class MovingHeadAnimationNodeRemoveCommand :
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.animationnode.removed")
-                    .param("stateFrameName", stateFrameName)
-                    .param("animationNodeName", animationNodeName)
-            )
+            Message.translation("server.movingheads.animationnode.removed")
+                .param("stateFrameName", stateFrameName)
+                .param("animationNodeName", animationNodeName)
+                .withPrefix()
         )
     }
 }

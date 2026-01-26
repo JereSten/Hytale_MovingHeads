@@ -14,9 +14,11 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 import javax.annotation.Nonnull
 
-class MovingHeadAnimationNodeDeleteCommand : AbstractTargetPlayerCommand("delete", "server.movingheads.animationnode.delete") {
+class MovingHeadAnimationNodeDeleteCommand :
+    AbstractTargetPlayerCommand("delete", "server.movingheads.animationnode.delete") {
 
     @Nonnull
     private val nameArg: RequiredArg<String> =
@@ -35,15 +37,15 @@ class MovingHeadAnimationNodeDeleteCommand : AbstractTargetPlayerCommand("delete
         val name = commandContext.get<String>(nameArg)
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationToDelete = config.getAnimationNodes(playerRef.uuid, name)
+        val animationToDelete = config.getAnimationNode(playerRef.uuid, name)
         config.animationNodes.remove(animationToDelete)
 
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.animationnode.deleted").param("animationNodeName", name)
-            )
+            Message.translation("server.movingheads.animationnode.deleted")
+                .param("animationNodeName", name)
+                .withPrefix()
         )
     }
 }

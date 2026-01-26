@@ -2,6 +2,7 @@ package de.jerst.plugin.movingheads.commands
 
 import com.hypixel.hytale.server.core.command.system.AbstractCommand
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractCommandCollection
+import com.hypixel.hytale.server.core.universe.world.SoundUtil
 import de.jerst.plugin.movingheads.commands.animation.MovingHeadAnimationCommand
 import de.jerst.plugin.movingheads.commands.animationnode.MovingHeadAnimationNodeCommand
 import de.jerst.plugin.movingheads.commands.scenegroup.MovingHeadSceneGroupPlayCommand
@@ -14,9 +15,10 @@ class MovingHeadCommand : AbstractCommandCollection("movinghead", "server.mh.com
         setPermissionGroups("mh.command.scenery")
         addAliases("mh")
 
-        addSubCommand(MovingHeadSceneGroupCommand() as AbstractCommand)
-        addSubCommand(MovingHeadAnimationCommand() as AbstractCommand)
-        addSubCommand(MovingHeadAnimationNodeCommand() as AbstractCommand)
-        addSubCommand(MovingHeadStateFrameCommand() as AbstractCommand)
+        addSubCommand(MovingHeadSceneGroupCommand())
+        addSubCommand(MovingHeadAnimationCommand())
+        addSubCommand(MovingHeadAnimationNodeCommand())
+        addSubCommand(MovingHeadStateFrameCommand())
+        addSubCommand(MovingHeadHelpCommand())
     }
 }

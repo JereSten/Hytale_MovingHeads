@@ -15,6 +15,7 @@ import de.jerst.plugin.movingheads.model.AnimationTrack
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadAnimationRemoveCommand : AbstractTargetPlayerCommand("remove", "server.movingheads.animation.remove") {
 
@@ -48,9 +49,9 @@ class MovingHeadAnimationRemoveCommand : AbstractTargetPlayerCommand("remove", "
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("animationName", animationName).param("animationNodeName", animationNodeName)
-            )
+                Message.translation("server.movingheads.scenegroup.created").param("animationName", animationName)
+                    .param("animationNodeName", animationNodeName)
+                    .withPrefix()
         )
     }
 }

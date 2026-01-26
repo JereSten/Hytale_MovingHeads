@@ -1,0 +1,7 @@
+Moving Heads Plugin
+Copyright 2026 Jerst
+
+This product includes software developed by
+[Jerst] (https://github.com/JereSten/Hytale_MovingHeads).
+
+Built for use with Hytale.

@@ -12,5 +12,6 @@ class MovingHeadAnimationNodeCommand: AbstractCommandCollection("animationnode",
         addSubCommand(MovingHeadAnimationNodeRemoveCommand())
         addSubCommand(MovingHeadAnimationNodePlayCommand())
         addSubCommand(MovingHeadAnimationNodeListCommand())
+        addSubCommand(MovingHeadAnimationNodeAddSoundCommand())
     }
 }

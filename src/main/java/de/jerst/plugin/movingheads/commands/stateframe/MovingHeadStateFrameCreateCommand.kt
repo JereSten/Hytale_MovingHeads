@@ -17,6 +17,7 @@ import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.model.StateFrame
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadStateFrameCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.stateframe.create") {
 
@@ -60,9 +61,9 @@ class MovingHeadStateFrameCreateCommand : AbstractTargetPlayerCommand("create", 
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.created").param("name", stateFrameName)
-            )
+                Message.translation("server.movingheads.scenegroup.created")
+                    .param("name", stateFrameName)
+                    .withPrefix()
         )
     }
 }

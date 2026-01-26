@@ -15,6 +15,7 @@ import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.model.SceneGroup
+import de.jerst.plugin.movingheads.utils.withPrefix
 import javax.annotation.Nonnull
 
 /**
@@ -48,9 +49,9 @@ class MovingHeadSceneGroupDeleteCommand :
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.scenegroup.deleted").param("name", name)
-            )
+            Message.translation("server.movingheads.scenegroup.deleted")
+                .param("name", name)
+                .withPrefix()
         )
     }
 }

@@ -1,15 +1,19 @@
 package de.jerst.plugin.movingheads.utils
 
+import com.hypixel.hytale.component.ComponentAccessor
+import com.hypixel.hytale.protocol.SoundCategory
 import com.hypixel.hytale.server.core.Message
+import com.hypixel.hytale.server.core.asset.type.soundevent.config.SoundEvent
 import com.hypixel.hytale.server.core.command.system.CommandContext
+import com.hypixel.hytale.server.core.universe.world.SoundUtil
 import com.hypixel.hytale.server.core.universe.world.World
+import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import de.jerst.plugin.movingheads.model.AnimationNode
 import de.jerst.plugin.movingheads.model.AnimationTrack
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import kotlinx.coroutines.*
 import java.util.*
 
-// Manager-Klasse für player-spezifische Jobs (Singleton oder in Plugin-Context)
 object AnimationManager {
     private val playerJobs = mutableMapOf<UUID, Job>()
 
@@ -32,7 +36,7 @@ object AnimationManager {
         val job = CoroutineScope(Dispatchers.Default + SupervisorJob()).launch {
             try {
                 for (animationNodeName in animation.animationNodes) {
-                    val animationNode = config.getAnimationNodes(player, animationNodeName) ?: continue
+                    val animationNode = config.getAnimationNode(player, animationNodeName) ?: continue
 
                     playAnimationNode(animationNode, config, player, world)
 
@@ -44,12 +48,10 @@ object AnimationManager {
                 }
                 commandContext.sendMessage(Message.translation("Animation finished").withPrefix())
             } finally {
-                // Cleanup falls nötig
             }
 
             playerJobs.remove(player)
         }
-        // Vorherigen stoppen falls vorhanden
         playerJobs[player]?.cancel()
         playerJobs[player] = job
     }
@@ -59,6 +61,23 @@ object AnimationManager {
             for (stateFrameName in animationNode.stateFrames) {
                 val stateFrame = config.getStateFrame(player, stateFrameName) ?: continue
                 val sceneGroup = config.getOrCreateSceneGroup(player, stateFrame.sceneGroupName) ?: continue
+
+                if (animationNode.soundEvent != null) {
+                    // Play sound if soundevent is set
+                    val soundEvent = SoundEvent.getAssetMap().getIndex(animationNode.soundEvent!!.soundName)
+                    val pos = animationNode.soundEvent!!.blocks
+
+                    world.execute {
+                        SoundUtil.playSoundEvent3d(
+                            soundEvent,
+                            SoundCategory.Music,
+                            pos.x.toDouble(),
+                            pos.y.toDouble(),
+                            pos.z.toDouble(),
+                            world.entityStore.store as ComponentAccessor<EntityStore>
+                        )
+                    }
+                }
 
                 launch {
                     repeat(stateFrame.iterations) {
@@ -91,9 +110,21 @@ object AnimationManager {
         playerJobs.clear()
     }
 
+    /**
+     * Stateduration in ms
+     */
     fun getStateDuration(stage: String): Long {
         when (stage) {
-            "On" -> return 4000L
+            "Off" -> return 0L
+            "On" -> return 0L
+            "IntroSide" -> return 20000L
+            "IntroStage" -> return 4000L
+            "OutroStage" -> return 4000L
+            "PartyOne" -> return 35000L
+            "PartyTwo" -> return 33000L
+            "Down" -> return 3500L
+            "Up" -> return 3000L
+            "UpDownOne" -> return 12000L
             else -> {}
         }
         return 0

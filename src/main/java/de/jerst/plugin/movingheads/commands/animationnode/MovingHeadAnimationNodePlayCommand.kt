@@ -37,10 +37,10 @@ class MovingHeadAnimationNodePlayCommand: AbstractTargetPlayerCommand("play", "s
         val animationNodeName = commandContext.get<String>(animationNodeNameArg)
 
         val config = configManager.load<MovingHeadConfig>()
-        val animationNode = config.getAnimationNodes(playerRef.uuid, animationNodeName)
+        val animationNode = config.getAnimationNode(playerRef.uuid, animationNodeName)
         if (animationNode == null) {
             commandContext.sendMessage(
-                Message.translation("server.movingheads.animationnode.play.notfound")
+                Message.translation("server.movingheads.animationnode.notfound")
                     .param("animationNodeName", animationNodeName)
                     .withErrorPrefix()
             )

@@ -14,6 +14,7 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadAnimationAddCommand : AbstractTargetPlayerCommand("add", "server.movingheads.animation.add") {
 
@@ -47,9 +48,9 @@ class MovingHeadAnimationAddCommand : AbstractTargetPlayerCommand("add", "server
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.animation.added").param("animationName", animationName).param("animationNodeName", animationNodeName)
-            )
+                Message.translation("server.movingheads.animation.added").param("animationName", animationName)
+                    .param("animationNodeName", animationNodeName)
+                    .withPrefix()
         )
     }
 }

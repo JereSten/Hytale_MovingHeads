@@ -21,7 +21,7 @@ class MessageUtil {
         fun pluginTMessage(message: Message): Message {
             return Message.join(
                 Message.raw("[MovingHeads] ").color(Color.CYAN),
-                message.color(Color.WHITE)
+                message
             );
         }
     }

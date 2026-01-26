@@ -1,0 +1,150 @@
+{
+  "ItemLevel": 15,
+  "MaxStack": 100,
+  "Icon": "Icons/ItemsGenerated/Moving_Head.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "Set": "Moving Heads",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 4
+      },
+      {
+        "ItemId": "Soil_Sand",
+        "Quantity": 2
+      }
+    ],
+    "OutputQuantity": 1,
+    "TimeSeconds": 0,
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ]
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "VariantRotation": "All",
+    "Textures": [
+      {
+        "All": "BlockTextures/spot.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#4b4b4b",
+    "BlockSoundSetId": "Metal",
+    "CustomModel": "Blocks/Models/Spot.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "BlockTextures/spot.png"
+      }
+    ],
+    "RotationYawPlacementOffset": "Ninety",
+    "FlipType": "Symmetric",
+    "State": {
+      "Definitions": {
+        "Off": {
+          "InteractionHint": "server.items.Moving_Head.startmove",
+          "CustomModel": "Blocks/Models/Spot.blockymodel"
+        },
+        "On": {
+          "InteractionHint": "server.items.Moving_Head.startmove",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "IntroSide": {
+          "CustomModelAnimation": "Blocks/Animations/intro_side_right.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "IntroStage": {
+          "CustomModelAnimation": "Blocks/Animations/intro_stage_right.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "OutroStage": {
+          "parent": "IntroStage",
+          "CustomModelAnimation": "Blocks/Animations/outro_stage_right.blockyanim"
+        },
+        "PartyOne": {
+          "CustomModelAnimation": "Blocks/Animations/party_1_right.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "PartyTwo": {
+          "CustomModelAnimation": "Blocks/Animations/party_2_right.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Down": {
+          "CustomModelAnimation": "Blocks/Animations/down.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Up": {
+          "CustomModelAnimation": "Blocks/Animations/up.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "UpDownOne": {
+          "CustomModelAnimation": "Blocks/Animations/updown_1.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        }
+      }
+    },
+    "RandomRotation": "None",
+    "PlacementSettings": {
+      "RotationMode": "Default",
+      "AllowRotationKey": true,
+      "BlockPreviewVisibility": "AlwaysVisible"
+    }
+  },
+  "ItemSoundSetId": "ISS_Blocks_Stone",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [
+      22.5,
+      45,
+      22.5
+    ],
+    "Translation": [
+      0,
+      -13.5
+    ]
+  },
+  "TranslationProperties": {
+    "Name": "server.items.Moving_Head_2b_right.name"
+  },
+  "PlayerAnimationsId": "Block"
+}

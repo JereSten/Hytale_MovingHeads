@@ -1,3 +1,18 @@
+# === Items ===
+items.Moving_Head_2b_right.name = Moving Head Rechts (2m)
+items.Moving_Head_4b_right.name = Moving Head Rechts (4m)
+items.Moving_Head_6b_right.name = Moving Head Rechts (6m)
+items.Moving_Head_12b_right.name = Moving Head Rechts (12m)
+
+items.Moving_Head_2b_left.name = Moving Head Links (2m)
+items.Moving_Head_4b_left.name = Moving Head Links (4m)
+items.Moving_Head_6b_left.name = Moving Head Links (6m)
+items.Moving_Head_12b_left.name = Moving Head Links (12m)
+
+items.Moving_Head.startmove = Bewegung
+
+items.Moving_Speaker.name = Lautsprecher
+
 # === Animation ===
 movingheads.animation.name = Verwaltung der Animationen
 movingheads.animation.add = Animationnode zur Animation hinzufügen
@@ -27,10 +42,12 @@ movingheads.animationnode.deleted = Animationnode {animationNodeName} wurde gel�
 movingheads.animationnode.list = Auflistung deiner AnimationNodes
 movingheads.animationnode.yours = Deine AnimationNodes:
 movingheads.animationnode.play = Animationnode abspielen
-movingheads.animationnode.play.notfound = Animationnode {animationNodeName} wurde nicht gefunden!
+movingheads.animationnode.notfound = Animationnode {animationNodeName} wurde nicht gefunden!
 movingheads.animationnode.playing = Animationnode {animationNodeName} wird abgespielt.
 movingheads.animationnode.remove = Stateframe von Animationnode entfernen
 movingheads.animationnode.removed = Stateframe {stateFrameName} von Animationnode {animationNodeName} entfernt!
+movingheads.animationnode.addsound = Sound zur Animationnode hinzufügen
+movingheads.animationnode.soundadded = Sound zur Animationnode {animationNodeName] erfolgreich hinzugefügt!
 
 # === Scenegroup ===
 movingheads.scenegroup.name = Szenename
@@ -66,13 +83,19 @@ movingheads.warning.noblock = Kein Block in Reichweite!
 
 # === Arguments ===
 movingheads.arg.animation.name = Name der Animation
+
 movingheads.arg.animationnode.name = Animationnode
 movingheads.arg.animationnode.wait = Wartezeit
 movingheads.arg.animationnode.add.name = Animationnode, die dieser Animation zugeordnet werden soll
+movingheads.arg.animationnode.soundevent = Abzuspielendes Sound-Event
+
 movingheads.arg.stateframe.add.name = Stateframe, das einer Animationnode zugewiesen werden soll
 movingheads.arg.stateframe.name = Stateframe
-movingheads.arg.scenegroup.name = Szenengruppe
 movingheads.arg.statename.name = State
 movingheads.arg.iterations.name = Iterationen
 
+movingheads.arg.scenegroup.name = Szenengruppe
+
 mh.commands = Steuerung Moving Heads
+mh.commands.help = Hilfe: Zeigt auf, wie man vorgehen muss, um eine Animation zu erstellen
+mh.commands.help.text = Folgende Schritte sind erforderlich, um eine Animation mit Moving-Heads zu erstellen:\n\n1. Erstelle eine Szeneriegruppe und füge ihr Blöcke hinzu: /mh sc\n2. Erstelle einen StateFrame, dieser weist einer Szeneriegruppe einen Blockstate zu: /mh sf\n3. Erstelle eine AnimationNode und weise ihr deine StateFrames hinzu. Alle zugewiesenen StateFrames werden zeitgleich abgespielt: /mh ann\n4. Erstelle eine Animation und weise ihr deine AnimationNodes hinzu. AnimationNodes werden sequentiell abgespielt: /mh an\n5. Mit /mh an play [AnimationName] kann die Animation gestartet werden

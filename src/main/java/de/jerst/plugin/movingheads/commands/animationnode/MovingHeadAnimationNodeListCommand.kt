@@ -31,7 +31,7 @@ class MovingHeadAnimationNodeListCommand : AbstractTargetPlayerCommand("list", "
             Message.translation("server.movingheads.animationnode.yours").withPrefix()
         )
 
-        for (animationNode in config.getAnimationNodes(playerRef.uuid)) {
+        for (animationNode in config.getAnimationNode(playerRef.uuid)) {
             commandContext.sendMessage(
                 Message.raw("\t- ${animationNode.name}")
             )

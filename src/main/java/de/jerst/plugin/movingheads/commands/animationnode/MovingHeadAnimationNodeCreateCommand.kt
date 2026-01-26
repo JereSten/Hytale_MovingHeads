@@ -15,7 +15,7 @@ import de.jerst.plugin.movingheads.MovingHeadsPlugin
 import de.jerst.plugin.movingheads.model.AnimationNode
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
-import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 
 class MovingHeadAnimationNodeCreateCommand :
     AbstractTargetPlayerCommand("create", "server.movingheads.animationnode.create") {
@@ -25,7 +25,6 @@ class MovingHeadAnimationNodeCreateCommand :
 
     private val waitArg: OptionalArg<Int?> =
         withOptionalArg<Int?>("wait", "server.movingheads.arg.animationnode.wait", ArgTypes.INTEGER)
-
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
@@ -42,22 +41,23 @@ class MovingHeadAnimationNodeCreateCommand :
 
         val config = configManager.load<MovingHeadConfig>()
 
-        val animationNode = config.getAnimationNodes(playerRef.uuid, name)
+        val animationNode = config.getAnimationNode(playerRef.uuid, name)
         if (animationNode != null) {
-            // TODO Error Message
+            commandContext.sendMessage(
+                Message.translation("server.movingheads.animationnode.notfound")
+                    .param("animationNodeName", name).withPrefix()
+            )
             return
         }
 
-        val newAnimationNode = AnimationNode(playerRef.uuid, name, wait)
+        val newAnimationNode = AnimationNode(playerRef.uuid, name, wait, mutableListOf(), null)
         config.animationNodes.add(newAnimationNode)
 
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.animationnode.created")
-                    .param("animationNode", name)
-            )
+            Message.translation("server.movingheads.animationnode.created")
+                .param("animationNodeName", name).withPrefix()
         )
     }
 }

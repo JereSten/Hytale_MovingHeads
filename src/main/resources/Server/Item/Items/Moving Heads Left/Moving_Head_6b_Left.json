@@ -1,0 +1,82 @@
+{
+  "Parent": "Moving_Head_2b_Left",
+  "TranslationProperties": {
+    "Name": "server.items.Moving_Head_6b_left.name"
+  },
+  "BlockType": {
+    "CustomModel": "Blocks/Models/Spot.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "BlockTextures/spot_6b.png"
+      }
+    ],
+    "State": {
+      "Definitions": {
+        "Off": {
+          "InteractionHint": "server.items.Moving_Head.startmove",
+          "CustomModel": "Blocks/Models/Spot.blockymodel"
+        },
+        "On": {
+          "InteractionHint": "server.items.Moving_Head.startmove",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "IntroSide": {
+          "CustomModelAnimation": "Blocks/Animations/intro_side_left.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "IntroStage": {
+          "CustomModelAnimation": "Blocks/Animations/intro_stage_left.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "OutroStage": {
+          "parent": "IntroStage",
+          "CustomModelAnimation": "Blocks/Animations/outro_stage_left.blockyanim"
+        },
+        "PartyOne": {
+          "CustomModelAnimation": "Blocks/Animations/party_1_left.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "PartyTwo": {
+          "CustomModelAnimation": "Blocks/Animations/party_2_left.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Down": {
+          "CustomModelAnimation": "Blocks/Animations/down.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Up": {
+          "CustomModelAnimation": "Blocks/Animations/up.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "UpDownOne": {
+          "CustomModelAnimation": "Blocks/Animations/updown_1.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        }
+      }
+    }
+  }
+}

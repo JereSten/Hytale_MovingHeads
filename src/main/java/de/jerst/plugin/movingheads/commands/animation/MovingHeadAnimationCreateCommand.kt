@@ -15,6 +15,7 @@ import de.jerst.plugin.movingheads.model.AnimationTrack
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.utils.MessageUtil
+import de.jerst.plugin.movingheads.utils.withPrefix
 import javax.annotation.Nonnull
 
 class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "server.movingheads.animation.create") {
@@ -48,9 +49,9 @@ class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "
         configManager.save(config)
 
         commandContext.sendMessage(
-            MessageUtil.pluginTMessage(
-                Message.translation("server.movingheads.animation.created").param("name", name)
-            )
+                Message.translation("server.movingheads.animation.created")
+                    .param("name", name)
+                    .withPrefix()
         )
     }
 }
