@@ -60,8 +60,8 @@ tasks.named('jar') { enabled = false }
 tasks.named('assemble') { dependsOn shadowJar }
 
 task copyToServer(type: Copy) {
-    dependsOn jar
-    from jar.archivePath
+    dependsOn shadowJar
+    from shadowJar.archivePath
     into 'D:/Entwicklung/Hytale/Server/mods'
 }
 
