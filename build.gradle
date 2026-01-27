@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm'
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.gradleup.shadow") version "9.3.1"
 }
 
 group = 'de.jerst'
@@ -35,21 +35,16 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
 }
 
-jar {
-    manifest {
-        attributes["Main-Class"] = "de.jerst.plugin.movingheads.MovingHeadsPlugin"
-    }
-
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
-    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-}
-
 test {
     useJUnitPlatform()
 }
 
 shadowJar {
+    manifest {
+        attributes["Main-Class"] = "de.jerst.plugin.movingheads.MovingHeadsPlugin"
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     configurations = [project.configurations.runtimeClasspath]
 
     dependencies {
@@ -60,6 +55,9 @@ shadowJar {
 
     archiveClassifier.set('')
 }
+
+tasks.named('jar') { enabled = false }
+tasks.named('assemble') { dependsOn shadowJar }
 
 task copyToServer(type: Copy) {
     dependsOn jar
