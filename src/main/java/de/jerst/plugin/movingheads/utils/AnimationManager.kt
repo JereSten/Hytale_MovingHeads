@@ -23,10 +23,10 @@ object AnimationManager {
         animation: AnimationTrack,
         world: World,
         player: UUID
-    ) {
+    ): Boolean {
         if (playerJobs.contains(player)) {
-            commandContext.sendMessage(Message.translation("Du kannst nur eine Animation ausführen!").withErrorPrefix())
-            return
+            commandContext.sendMessage(Message.translation("server.movingheads.animation.onlyone").withErrorPrefix())
+            return false
         }
 
         commandContext.sendMessage(
@@ -54,6 +54,7 @@ object AnimationManager {
         }
         playerJobs[player]?.cancel()
         playerJobs[player] = job
+        return true
     }
 
     suspend fun playAnimationNode(animationNode: AnimationNode, config: MovingHeadConfig, player: UUID, world: World) {

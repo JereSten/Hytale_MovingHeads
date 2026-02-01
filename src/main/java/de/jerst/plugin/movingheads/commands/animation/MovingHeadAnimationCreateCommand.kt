@@ -34,14 +34,14 @@ class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "
         world: World,
         store: Store<EntityStore?>
     ) {
-        val name = commandContext.get<String?>(nameArg)
+        val animationNodeName = commandContext.get<String?>(nameArg)
 
-        if (name == null) {
+        if (animationNodeName == null) {
             commandContext.sendMessage(MessageUtil.pluginMessage("Name missing"))
             return
         }
 
-        val newSceneryGroup = AnimationTrack(playerRef.uuid, name)
+        val newSceneryGroup = AnimationTrack(playerRef.uuid, animationNodeName)
 
         val config = configManager.load<MovingHeadConfig>().apply {
             animationTracks.add(newSceneryGroup)
@@ -50,7 +50,7 @@ class MovingHeadAnimationCreateCommand : AbstractTargetPlayerCommand("create", "
 
         commandContext.sendMessage(
                 Message.translation("server.movingheads.animation.created")
-                    .param("name", name)
+                    .param("animationNode", animationNodeName)
                     .withPrefix()
         )
     }

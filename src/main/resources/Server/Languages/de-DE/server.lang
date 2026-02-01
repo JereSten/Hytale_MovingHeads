@@ -30,6 +30,8 @@ movingheads.animation.remove = Animationnode von der Animation entfernen
 movingheads.animation.removes = Animationnode {animationNodeName} wurde von der Animation {animationName} entfernt!
 movingheads.animation.stop = Animation anhalten
 movingheads.animation.stopped = Deine laufende Animation wurde gestoppt!
+movingheads.animation.onlyone = Du kannst nur eine Animation abspielen!
+
 
 # === Animationnode ===
 movingheads.animationnode.manage = Animationnodes verwalten

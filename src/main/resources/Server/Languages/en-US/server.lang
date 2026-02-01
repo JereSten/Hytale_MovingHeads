@@ -32,6 +32,7 @@ movingheads.animation.remove = Remove animation node from animation
 movingheads.animation.removes = Animation node {animationNodeName} was removed from animation {animationName}!
 movingheads.animation.stop = Stop animation
 movingheads.animation.stopped = Your running animation has been stopped!
+movingheads.animation.onlyone = You are allowed to play one animation at once!
 
 # === Animationnode ===
 movingheads.animationnode.manage = Manage animation nodes
