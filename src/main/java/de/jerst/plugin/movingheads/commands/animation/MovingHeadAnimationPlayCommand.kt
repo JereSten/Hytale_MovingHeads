@@ -45,11 +45,12 @@ class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "serv
             return
         }
 
-        AnimationManager.startAnimation(config, commandContext, animation, world, playerRef.uuid)
-
-        commandContext.sendMessage(
+        if (AnimationManager.startAnimation(config, commandContext, animation, world, playerRef.uuid)) {
+            commandContext.sendMessage(
                 Message.translation("server.movingheads.animation.playing").param("animationName", name).withPrefix()
-        )
+            )
+
+        }
     }
 
 }
