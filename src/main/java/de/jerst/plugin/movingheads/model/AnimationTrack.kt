@@ -4,6 +4,6 @@ import java.util.*
 
 data class AnimationTrack(
     val playerUUID: UUID,
-    val name: String,
+    var name: String,
     val animationNodes: MutableList<String> = mutableListOf()
 )

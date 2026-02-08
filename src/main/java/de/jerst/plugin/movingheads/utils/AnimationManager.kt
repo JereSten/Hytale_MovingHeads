@@ -43,7 +43,7 @@ object AnimationManager {
                     delay(getAnimationNodeDuration(animationNode, config, player))
 
                     if (animationNode.wait != null) {
-                        delay(animationNode.wait * 1000L)
+                        delay(animationNode.wait!! * 1000L)
                     }
                 }
                 commandContext.sendMessage(Message.translation("Animation finished").withPrefix())
@@ -92,7 +92,7 @@ object AnimationManager {
 
     private fun getAnimationNodeDuration(animationNode: AnimationNode, config: MovingHeadConfig, player: UUID): Long {
         if (animationNode.wait != null) {
-            return animationNode.wait
+            return animationNode.wait!!
         }
 
         val stateFrames = config.stateFrames.filter { animationNode.stateFrames.contains(it.name) }
@@ -129,5 +129,13 @@ object AnimationManager {
             else -> {}
         }
         return 0
+    }
+
+    fun getStates(): List<String> {
+        return listOf(
+            "Off", "On", "IntroSide", "IntroStage",
+            "OutroStage", "PartyOne", "PartyTwo",
+            "Down", "Up", "UpDownOne"
+        )
     }
 }

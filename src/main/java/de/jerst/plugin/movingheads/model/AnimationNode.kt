@@ -5,9 +5,9 @@ import java.util.UUID
 
 data class AnimationNode (
     val playerUUID: UUID,
-    val name: String,
-    val wait: Long?,
-    val stateFrames: MutableList<String> = mutableListOf(),
+    var name: String,
+    var wait: Long?,
+    var stateFrames: MutableList<String> = mutableListOf(),
     var soundEvent: SoundEvent?
 )
 

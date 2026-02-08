@@ -1,0 +1,230 @@
+<style>
+    .container {
+        anchor-width: 1000;
+        anchor-height: 550;
+    }
+
+    .scenegroup-title {
+        font-weight: bold;
+    }
+
+    .sc-card {
+        anchor-top: 10;
+        layout-mode: centermiddle;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .content-list {
+        layout-mode: TopScrolling;
+        anchor-height: 370;
+    }
+
+    .header-title {
+        font-size: 20;
+        font-weight: bold
+    }
+
+    @AddButtonDefault {
+        background-image: url('img/btn_add.png');
+    }
+    @AddButtonHovered {
+        background-image: url('img/btn_add_hovered.png');
+    }
+    @AddButtonPressed {
+        background-image: url('img/btn_add_pressed.png');
+    }
+
+    @DeleteButtonDefault {
+        background-image: url('img/btn_delete.png');
+    }
+    @DeleteButtonHovered {
+        background-image: url('img/btn_delete_hovered.png');
+    }
+    @DeleteButtonPressed {
+        background-image: url('img/btn_delete_pressed.png');
+    }
+
+    @EditButtonDefault {
+        background-image: url('img/btn_edit.png');
+    }
+    @EditButtonHovered {
+        background-image: url('img/btn_edit_hovered.png');
+    }
+    @EditButtonPressed {
+        background-image: url('img/btn_edit_pressed.png');
+    }
+
+    .command-text {
+        font-weight: bold;
+        anchor-left: 5;
+        anchor-right: 5;
+    }
+
+    .tab-content {
+        layout-mode: top;
+    }
+
+    .ml {
+        anchor-left: 10;
+    }
+</style>
+<div class="page-overlay">
+    <div class="container" data-hyui-title="Moving Heads {{$username}}">
+        <div class="container-contents">
+            <nav class="tabs"
+                 data-tabs="tab1:1. SceneGroups,tab2:2. StateFrames,tab3:3. AnimationNodes,tab4:4. Animations"
+                 data-selected="{{$activeTab}}"></nav>
+
+            <div class="tab-content" data-hyui-tab-id="tab1">
+                <div style="flex-direction: row; anchor-top: 10">
+                    <label>1. Create a new scene group using</label> <label class="command-text">/mh sc create
+                    [name]</label>
+                </div>
+                <div style="flex-direction: row">
+                    <label>2. Add blocks by looking at them and type</label> <label class="command-text">/mh sc add
+                    [name]</label>
+                </div>
+                <div class="content-list"
+                     data-hyui-scrollbar-style="DefaultScrollbarStyle">
+                    {{#each sceneGroups}}
+                    <div id="scenegroup-card-{{$name}}" class="sc-card">
+                        <div style="flex-weight: 1; anchor-full: 5; layout-mode: centermiddle">
+                            <p class="scenegroup-title" style="flex-weight: 1">{{$name}}</p>
+                            <button id="delete-scene-group-{{$name}}"
+                                    class="custom-button"
+                                    data-hyui-default-bg="@DeleteButtonDefault"
+                                    data-hyui-hovered-bg="@DeleteButtonHovered"
+                                    data-hyui-pressed-bg="@DeleteButtonPressed"
+                                    data-sceneGroup="{{$name}}"></button>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="tab-content" data-hyui-tab-id="tab2">
+                <div style="layout-mode: right; anchor-top: 10; anchor-bottom: 10">
+                    <button id="btn-add-stateframe"
+                            class="custom-button"
+                            data-hyui-default-bg="@AddButtonDefault"
+                            data-hyui-hovered-bg="@AddButtonHovered"
+                            data-hyui-pressed-bg="@AddButtonPressed"
+                    ></button>
+                </div>
+
+                <div class="content-list"
+                     data-hyui-scrollbar-style="DefaultScrollbarStyle">
+                    {{#each stateFrames}}
+                    <div id="stateframe-card-{{$name}}" class="sc-card">
+                        <div style="flex-weight: 1; anchor-full: 5; layout-mode: centermiddle">
+                            <div style="flex-weight: 1; flex-direction: row">
+                                <p class="scenegroup-title" style="anchor-width: 150">{{$name}}</p>
+                                <div style="flex-direction: column">
+                                    <p>Scenegroup: {{$sceneGroupName}}</p>
+                                    <p>State: {{$state}}</p>
+                                    <p>Iterations: {{$iterations}}</p>
+                                </div>
+                            </div>
+                            <button id="delete-state-frame-{{$name}}"
+                                    class="custom-button"
+                                    data-hyui-default-bg="@DeleteButtonDefault"
+                                    data-hyui-hovered-bg="@DeleteButtonHovered"
+                                    data-hyui-pressed-bg="@DeleteButtonPressed"
+                            ></button>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="tab-content" data-hyui-tab-id="tab3">
+                <div style="layout-mode: right; anchor-top: 10; anchor-bottom: 10">
+                    <button id="btn-add-animationnode"
+                            class="custom-button"
+                            data-hyui-default-bg="@AddButtonDefault"
+                            data-hyui-hovered-bg="@AddButtonHovered"
+                            data-hyui-pressed-bg="@AddButtonPressed"
+                    ></button>
+                </div>
+
+                <div class="content-list"
+                     data-hyui-scrollbar-style="DefaultScrollbarStyle">
+                    {{#each animationNodes}}
+                    <div id="animation-node-card-{{$name}}" class="sc-card">
+                        <div style="flex-weight: 1; anchor-full: 5; layout-mode: centermiddle">
+                            <div style="flex-weight: 1; flex-direction: row">
+                                <p class="scenegroup-title" style="anchor-width: 150">{{$name}}</p>
+                                <div style="flex-direction: column">
+                                    <p>Wait: {{$wait}}</p>
+                                    {{#if soundEvent != null}}
+                                    <p>Soundevent: {{$soundEvent.soundName}}</p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="ml">
+                                <button id="animation-node-edit-{{$name}}"
+                                        class="custom-button"
+                                        data-hyui-default-bg="@EditButtonDefault"
+                                        data-hyui-hovered-bg="@EditButtonHovered"
+                                        data-hyui-pressed-bg="@EditButtonPressed"
+                                ></button>
+                            </div>
+                            <div class="ml">
+                                <button id="animation-node-delete-{{$name}}"
+                                        class="custom-button"
+                                        data-hyui-default-bg="@DeleteButtonDefault"
+                                        data-hyui-hovered-bg="@DeleteButtonHovered"
+                                        data-hyui-pressed-bg="@DeleteButtonPressed"
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="tab-content" data-hyui-tab-id="tab4">
+                <div style="layout-mode: right; anchor-top: 10; anchor-bottom: 10">
+                    <button id="btn-add-animation"
+                            class="custom-button"
+                            data-hyui-default-bg="@AddButtonDefault"
+                            data-hyui-hovered-bg="@AddButtonHovered"
+                            data-hyui-pressed-bg="@AddButtonPressed"
+                    ></button>
+                </div>
+
+                <div class="content-list"
+                     data-hyui-scrollbar-style="DefaultScrollbarStyle">
+                    {{#each animations}}
+                    <div id="animation-card-{{$name}}" class="sc-card">
+                        <div style="flex-weight: 1; anchor-full: 5; layout-mode: centermiddle">
+                            <div style="flex-weight: 1; flex-direction: row">
+                                <p class="scenegroup-title" style="anchor-width: 150">{{$name}}</p>
+                            </div>
+                            <div class="ml">
+                                <button id="animation-edit-{{$name}}"
+                                        class="custom-button"
+                                        data-hyui-default-bg="@EditButtonDefault"
+                                        data-hyui-hovered-bg="@EditButtonHovered"
+                                        data-hyui-pressed-bg="@EditButtonPressed"
+                                ></button>
+                            </div>
+                            <div class="ml">
+                                <button id="animation-delete-{{$name}}"
+                                        class="custom-button"
+                                        data-hyui-default-bg="@DeleteButtonDefault"
+                                        data-hyui-hovered-bg="@DeleteButtonHovered"
+                                        data-hyui-pressed-bg="@DeleteButtonPressed"
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+
+            <!-- Stateframes -->
+        </div>
+    </div>
+</div>

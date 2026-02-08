@@ -1,0 +1,29 @@
+<style>
+    .container {
+        anchor-width: 600;
+        anchor-height: 400;
+    }
+
+    .title {
+        anchor-top: 10
+    }
+</style>
+<div class="page-overlay">
+    <div class="container" data-hyui-title="Create Stateframe">
+        <div class="container-contents">
+            <input type="text" id="name" placeholder="Name" maxlength="20"/>
+
+            <label class="title">Scenegroup</label>
+            <select id="sceneGroup" data-hyui-showlabel="true" style="anchor-top: 10; anchor-height: 40">
+            </select>
+
+            <label class="title">State</label>
+            <select id="state" data-hyui-showlabel="true" style="anchor-top: 10;  anchor-height: 40">
+            </select>
+
+            <label class="title">Iterations</label>
+            <input id="iterations" type="text" placeholder="Iterations" value="1" min="1" style="anchor-top: 10; anchor-height: 40"/>
+            <button id="submit" style="anchor-top: 10; anchor-height: 40">Save</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<style>
+    .container {
+        anchor-width: 600;
+        anchor-height: 620;
+    }
+
+    .title {
+        anchor-top: 10
+    }
+
+    .card {
+        anchor-top: 10;
+        layout-mode: centermiddle;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sf-container {
+        layout-mode: TopScrolling;
+        anchor-height: 350;
+
+    }
+
+    @DeleteButtonDefault {
+        background-image: url('img/btn_delete.png');
+    }
+    @DeleteButtonHovered {
+        background-image: url('img/btn_delete_hovered.png');
+    }
+    @DeleteButtonPressed {
+        background-image: url('img/btn_delete_pressed.png');
+    }
+
+    @UpButtonDefault {
+        background-image: url('img/btn_up.png');
+    }
+    @UpButtonHovered {
+        background-image: url('img/btn_up_hovered.png');
+    }
+    @UpButtonPressed {
+        background-image: url('img/btn_up_pressed.png');
+    }
+
+    @DownButtonDefault {
+        background-image: url('img/btn_down.png');
+    }
+    @DownButtonHovered {
+        background-image: url('img/btn_down_hovered.png');
+    }
+    @DownButtonPressed {
+        background-image: url('img/btn_down_pressed.png');
+    }
+
+    .ml {
+        anchor-left: 10;
+    }
+</style>
+<div class="page-overlay">
+    <div class="container" data-hyui-title="Edit Animation">
+        <div class="container-contents">
+            <label class="title">Name (Editing Name copies existing Animation)</label>
+            <input type="text" id="name" placeholder="Name" value="{{$animation.name}}" maxlength="20"/>
+
+            <label class="title">AnimationNodes (playing sequentially)</label>
+
+            <div class="sf-container" data-hyui-scrollbar-style="DefaultScrollbarStyle">
+                {{#each usedAnimationNodes}}
+                <div class="card">
+                    <div style="flex-weight: 1; anchor-full: 5; layout-mode: centermiddle">
+                        <div style="flex-weight: 1; flex-direction: row">
+                            <p class="animation-node-title" style="anchor-width: 150">{{$name}}</p>
+                        </div>
+                        <div class="ml">
+                            <button id="up-animation-node-{{$index}}"
+                                    class="custom-button"
+                                    data-hyui-default-bg="@UpButtonDefault"
+                                    data-hyui-hovered-bg="@UpButtonHovered"
+                                    data-hyui-pressed-bg="@UpButtonPressed"
+                            ></button>
+                        </div>
+                        <div class="ml">
+                            <button id="down-animation-node-{{$index}}"
+                                    class="custom-button"
+                                    data-hyui-default-bg="@DownButtonDefault"
+                                    data-hyui-hovered-bg="@DownButtonHovered"
+                                    data-hyui-pressed-bg="@DownButtonPressed"
+                            ></button>
+                        </div>
+                        <div class="ml">
+                            <button id="delete-animation-node-{{$index}}"
+                                    class="custom-button"
+                                    data-hyui-default-bg="@DeleteButtonDefault"
+                                    data-hyui-hovered-bg="@DeleteButtonHovered"
+                                    data-hyui-pressed-bg="@DeleteButtonPressed"
+                            ></button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+
+            <select id="addAnimationNode" data-hyui-showlabel="true" style="anchor-top: 10; anchor-height: 40">
+            </select>
+
+            <button id="submit" style="anchor-top: 10; anchor-height: 40">Save</button>
+        </div>
+    </div>
+</div>

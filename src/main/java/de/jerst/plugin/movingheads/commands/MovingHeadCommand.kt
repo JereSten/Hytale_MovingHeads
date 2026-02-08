@@ -17,5 +17,6 @@ class MovingHeadCommand : AbstractCommandCollection("movinghead", "server.mh.com
         addSubCommand(MovingHeadAnimationNodeCommand())
         addSubCommand(MovingHeadStateFrameCommand())
         addSubCommand(MovingHeadHelpCommand())
+        addSubCommand(MovingHeadGuiCommand())
     }
 }

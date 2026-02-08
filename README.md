@@ -195,3 +195,7 @@ Don't forget to give the project a star! Thanks again!
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+## References
+
+* HyUi: https://www.curseforge.com/hytale/mods/hyui

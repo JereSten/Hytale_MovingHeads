@@ -31,7 +31,7 @@ movingheads.animation.removes = Animationnode {animationNodeName} wurde von der 
 movingheads.animation.stop = Animation anhalten
 movingheads.animation.stopped = Deine laufende Animation wurde gestoppt!
 movingheads.animation.onlyone = Du kannst nur eine Animation abspielen!
-
+movingheads.animation.saved = Animation {animationName} wurde gespeichert!
 
 # === Animationnode ===
 movingheads.animationnode.manage = Animationnodes verwalten
@@ -39,6 +39,7 @@ movingheads.animationnode.add = Stateframe einer Animationnode zuweisen
 movingheads.animationnode.added = Stateframe {stateFrameName} wurde der Animationnode {animationNodeName} zugeordnet!
 movingheads.animationnode.create = Neue Animationnode erstellen
 movingheads.animationnode.created = Animationnode {animationNode} wurde erstellt!
+movingheads.animationnode.saved = Animationnode {animationNode} wurde gespeichert!
 movingheads.animationnode.delete = Animationnode löschen
 movingheads.animationnode.deleted = Animationnode {animationNodeName} wurde gelöscht!
 movingheads.animationnode.list = Auflistung deiner AnimationNodes
@@ -80,8 +81,11 @@ movingheads.stateframe.deleted = Stateframe {name} gelöscht!
 movingheads.stateframe.list = Auflistung deiner Stateframes
 movingheads.stateframe.yours = Deine Stateframes:
 
+movingheads.stateframe.incomplete = Es wurden nicht alle Werte angegeben!
+
 movingheads.warning.player = Nur ein Spieler darf diesen Befehl ausführen!
 movingheads.warning.noblock = Kein Block in Reichweite!
+
 
 # === Arguments ===
 movingheads.arg.animation.name = Name der Animation

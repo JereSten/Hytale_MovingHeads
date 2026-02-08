@@ -1,0 +1,76 @@
+<style>
+    .container {
+        anchor-width: 600;
+        anchor-height: 620;
+    }
+
+    .title {
+        anchor-top: 10
+    }
+
+    .card {
+        anchor-top: 10;
+        layout-mode: centermiddle;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .sf-container {
+        layout-mode: TopScrolling;
+        anchor-height: 270;
+
+    }
+
+    @DeleteButtonDefault {
+        background-image: url('img/btn_delete.png');
+    }
+    @DeleteButtonHovered {
+        background-image: url('img/btn_delete_hovered.png');
+    }
+    @DeleteButtonPressed {
+        background-image: url('img/btn_delete_pressed.png');
+    }
+
+    .ml {
+        anchor-left: 10;
+    }
+</style>
+<div class="page-overlay">
+    <div class="container" data-hyui-title="Edit Animationnode">
+        <div class="container-contents">
+            <label class="title">Name (Editing Name copies existing AnimationNode)</label>
+            <input type="text" id="name" placeholder="Name" value="{{$animationNode.name}}" maxlength="20"/>
+
+            <label class="title">Wait</label>
+            <input id="wait" type="text" placeholder="Wait" value="{{$animationNode.wait}}" min="0"
+                   style="anchor-top: 10; anchor-height: 40"/>
+
+            <label class="title">StateFrames (playing simultaneously)</label>
+
+            <div class="sf-container" data-hyui-scrollbar-style="DefaultScrollbarStyle">
+                {{#each animationNode.stateFrames}}
+                <div id="stateframe-card" class="card">
+                    <div style="flex-weight: 1; anchor-full: 5; layout-mode: centermiddle">
+                        <div style="flex-weight: 1; flex-direction: row">
+                            <p class="stateframe-title" style="anchor-width: 150">{{$item}}</p>
+                        </div>
+                        <div class="ml">
+                            <button id="delete-state-frame-{{$item}}"
+                                    class="custom-button"
+                                    data-hyui-default-bg="@DeleteButtonDefault"
+                                    data-hyui-hovered-bg="@DeleteButtonHovered"
+                                    data-hyui-pressed-bg="@DeleteButtonPressed"
+                            ></button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+
+            <select id="addStateFrame" data-hyui-showlabel="true" style="anchor-top: 10; anchor-height: 40">
+            </select>
+
+            <button id="submit" style="anchor-top: 10; anchor-height: 40">Save</button>
+        </div>
+    </div>
+</div>
