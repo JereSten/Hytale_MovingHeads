@@ -14,12 +14,9 @@
 
 This mod adds real, working moving heads to the game. You can use commands to build your own custom moving sequences
 based on eight preset animations (more animations are expected to be released soon)! You can also add your own 
-custom music to the animation! 
+custom music to the animation!
 
-> [!NOTE]  
-> Currently, creating custom moving sequences is quite difficult. The following documentation and the help pages
-> for the commands may help you. A quick how to can be accessed by typing `/mh help`. A custom GUI is planned for the
-> future to improve usability and make animation crafting easier.
+**New:** Create animations with ease using `/mh gui`
 
 Demo-Video:
 
@@ -72,6 +69,10 @@ AnimationTrack
 ```
 
 To create a new animation let's start from the uʍop ǝpᴉsdn 🔦🚲:
+
+The main command to create animations is `/mh gui`.
+The four tabs/steps in the gui guide you trough the process creating a new animation.
+
 Following guide shows only a small set of available commands for each step. Refer to the `/help` command to 
 familiarise yourself with all the available commands.
 
@@ -80,7 +81,7 @@ familiarise yourself with all the available commands.
 A SceneGroup is a 'container' that can hold multiple blocks. For example, you could put all the spots on the stage 
 in one group and put the rest in another 'side' group. 
 
-So let's create a new group with `/mh sc create stage`.
+Create a new scene group directly in the gui clicking the "plus" button.
 
 Next, we focus on each spot on the stage in turn and add them with the command `/mh sc add stage`. This command adds 
 the block you are looking and to the group.
@@ -92,35 +93,25 @@ Let's test! `/mh sc play stage Up`
 #### 2. Create a new StateFrame
 
 A Stateframe combines states and SceneGroups. It determines which animation is played for each Scenegroup. You can 
-create multiple reusable StateFrames, such as 'stageUp', 'stageDown' and 'stageParty1':
-`/mh sf create stageUp stage Up`
+create multiple reusable StateFrames, such as 'stageUp', 'stageDown' and 'stageParty1'.
 
-If you want the animation repeat for X times append X at the end of the command to define the amount of iterations 
-the animation should play.
+If you want the animation repeat for X times make use of the "Iterations"-Property.
 
 #### 3. Create AnimationNode
 
 An AnimationNode plays all the added StateFrames simultaneously.
-So let's create one and add the StateFrames that we have made.
+So let's create a new one and add the StateFrames that we have made using the dropdown on top of the Save-Button.
 
-1. `/mh annode create part1`
-2. `/mh annode add stageUp`
-3. `/mh annode add sideIntro`
+The selected will be set at the same time to their predefined SceneGroups.
 
-The states `stageUp` and `sideIntro` will be set at the same time to their predefined SceneGroups.
-
-Let's test! `/mh annode play part1`
+Let's test! `/mh annode play [name]`
 
 #### 4. Create Animation
 
 Almost done! Finally we have to define a new Animation. 
-`/mh an create demo`
 
 Now add all the AnimationNodes you want. Animations play each node sequentially, while state frames within an 
 AnimationNode are played in parallel. This allows for highly flexible animation combinations.
-
-1. `/mh an add part1`
-2. `/mh an add part2`
 
 Let the party begin! `/mh an play demo`
 
