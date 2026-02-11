@@ -26,11 +26,5 @@ class MovingHeadGuiCommand : AbstractTargetPlayerCommand("gui", "server.mh.comma
     ) {
         val animationUI = AnimationUi(store, playerRef)
         animationUI.buildMainPage()
-
-//        val config = configManager.load<MovingHeadConfig>()
-//        val animationNode = config.getAnimationNodes(playerRef.uuid, "test")
-
-//        val animation = config.getAnimation(playerRef.uuid, "test")
-//        animationUI.addEditAnimation(animation)
     }
 }

@@ -42,6 +42,22 @@ data class MovingHeadConfig(
         return stateFrames.filter { it.playerUUID == playerUid }
     }
 
+
+    /**
+     * Updates or adds animationnode
+     */
+    fun setStateFrame(stateFrame: StateFrame) {
+        val existingStateFrameIndex =
+            stateFrames.indexOfFirst { it.name == stateFrame.name
+                    && it.playerUUID == stateFrame.playerUUID }
+
+        if (existingStateFrameIndex != -1) {
+            stateFrames[existingStateFrameIndex] = stateFrame
+        } else {
+            stateFrames.add(stateFrame)
+        }
+    }
+
     /**
      * Updates or adds animationnode
      */

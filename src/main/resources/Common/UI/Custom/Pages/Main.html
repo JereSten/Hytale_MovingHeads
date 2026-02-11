@@ -76,14 +76,30 @@
                  data-selected="{{$activeTab}}"></nav>
 
             <div class="tab-content" data-hyui-tab-id="tab1">
-                <div style="flex-direction: row; anchor-top: 10">
-                    <label>1. Create a new scene group using</label> <label class="command-text">/mh sc create
-                    [name]</label>
+                <div style="layout-mode: left">
+                    <div style="layout-mode: top; flex-weight: 1">
+                        <div style="flex-direction: row; anchor-top: 10">
+                            <label>1. Create a new scene group using</label> <label class="command-text">/mh sc create
+                            [name]</label>
+                        </div>
+                        <div style="flex-direction: row">
+                            <label>2. Add blocks by looking at them and type</label> <label class="command-text">/mh sc add
+                            [name]</label>
+                        </div>
+                        <div style="flex-direction: row">
+                            <label>3. Use</label> <label class="command-text">/mh sc show [name]</label> to highlight added blocks
+                        </div>
+                    </div>
+                    <div style="layout-mode: right; anchor-top: 10; anchor-bottom: 10">
+                        <button id="btn-add-scenegroup"
+                                class="custom-button"
+                                data-hyui-default-bg="@AddButtonDefault"
+                                data-hyui-hovered-bg="@AddButtonHovered"
+                                data-hyui-pressed-bg="@AddButtonPressed"
+                        ></button>
+                    </div>
                 </div>
-                <div style="flex-direction: row">
-                    <label>2. Add blocks by looking at them and type</label> <label class="command-text">/mh sc add
-                    [name]</label>
-                </div>
+
                 <div class="content-list"
                      data-hyui-scrollbar-style="DefaultScrollbarStyle">
                     {{#each sceneGroups}}
@@ -125,12 +141,22 @@
                                     <p>Iterations: {{$iterations}}</p>
                                 </div>
                             </div>
-                            <button id="delete-state-frame-{{$name}}"
-                                    class="custom-button"
-                                    data-hyui-default-bg="@DeleteButtonDefault"
-                                    data-hyui-hovered-bg="@DeleteButtonHovered"
-                                    data-hyui-pressed-bg="@DeleteButtonPressed"
-                            ></button>
+                            <div class="ml">
+                                <button id="edit-state-frame-{{$name}}"
+                                        class="custom-button"
+                                        data-hyui-default-bg="@EditButtonDefault"
+                                        data-hyui-hovered-bg="@EditButtonHovered"
+                                        data-hyui-pressed-bg="@EditButtonPressed"
+                                ></button>
+                            </div>
+                            <div class="ml">
+                                <button id="delete-state-frame-{{$name}}"
+                                        class="custom-button"
+                                        data-hyui-default-bg="@DeleteButtonDefault"
+                                        data-hyui-hovered-bg="@DeleteButtonHovered"
+                                        data-hyui-pressed-bg="@DeleteButtonPressed"
+                                ></button>
+                            </div>
                         </div>
                     </div>
                     {{/each}}
@@ -155,7 +181,10 @@
                             <div style="flex-weight: 1; flex-direction: row">
                                 <p class="scenegroup-title" style="anchor-width: 150">{{$name}}</p>
                                 <div style="flex-direction: column">
+                                    {{#if wait != null}}
                                     <p>Wait: {{$wait}}</p>
+                                    {{/if}}
+
                                     {{#if soundEvent != null}}
                                     <p>Soundevent: {{$soundEvent.soundName}}</p>
                                     {{/if}}

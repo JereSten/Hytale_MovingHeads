@@ -34,7 +34,7 @@ class MovingHeadAnimationPlayCommand : AbstractTargetPlayerCommand("play", "serv
         world: World,
         store: Store<EntityStore?>
     ) {
-        val name = commandContext.get<String>(nameArg)
+        val name = commandContext.get(nameArg)
         val config = configManager.load<MovingHeadConfig>()
 
         val animation = config.getAnimation(playerRef.uuid, name)

@@ -56,7 +56,6 @@ class MovingHeadSceneGroupCreateCommand :
             Message.translation("server.movingheads.scenegroup.created")
                 .param("name", name)
                 .withPrefix()
-
         )
     }
 }

@@ -4,8 +4,8 @@ import java.util.UUID
 
 data class StateFrame (
     val playerUUID: UUID,
-    val name: String,
-    val sceneGroupName: String,
-    val state: String,
-    val iterations: Int = 1
+    var name: String,
+    var sceneGroupName: String,
+    var state: String,
+    var iterations: Int = 1
 )

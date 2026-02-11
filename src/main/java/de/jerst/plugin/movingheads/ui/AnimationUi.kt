@@ -24,7 +24,32 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
 
     var configManager: ConfigurationUtil = MovingHeadsPlugin.INSTANCE.config
 
-    fun addEditAnimation(animation: AnimationTrack?, onSave: ((UIContext) -> Unit)? = null) {
+    fun buildCreateSceneGroupPage(onSave: ((UIContext) -> Unit)? = null) {
+        val config = configManager.load<MovingHeadConfig>()
+
+        val page = PageBuilder.pageForPlayer(playerRef)
+            .loadHtml("Pages/AddSceneGroup.html")
+
+        page.addEventListener("submit", CustomUIEventBindingType.Activating) { _, ctx ->
+            val name = ctx.getValue("name", String::class.java).get()
+            val newSceneGroup = SceneGroup(name, playerRef.uuid)
+            config.sceneGroups.add(newSceneGroup)
+
+            configManager.save(config)
+
+            playerRef.sendMessage(
+                Message.translation("server.movingheads.scenegroup.created")
+                    .param("name", name)
+                    .withPrefix()
+            )
+
+            onSave?.invoke(ctx)
+        }
+
+        page.open(store)
+    }
+
+    fun buildAddEditAnimationPage(animation: AnimationTrack?, onSave: ((UIContext) -> Unit)? = null) {
         var animationEdit = animation;
 
         if (animationEdit == null) {
@@ -53,7 +78,7 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
             dropdown.addEventListener(CustomUIEventBindingType.ValueChanged) { selectedValue ->
                 animationEdit.animationNodes.add(selectedValue)
 
-                addEditAnimation(animationEdit)
+                buildAddEditAnimationPage(animationEdit, onSave)
             }
         }
 
@@ -65,17 +90,17 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
         for ((index, name) in animationEdit!!.animationNodes.withIndex()) {
             page.addEventListener("up-animation-node-${index}", CustomUIEventBindingType.Activating) { _, ctx ->
                 animationEdit.animationNodes.moveUpCircular(index)
-                addEditAnimation(animationEdit)
+                buildAddEditAnimationPage(animationEdit, onSave)
             }
 
             page.addEventListener("down-animation-node-${index}", CustomUIEventBindingType.Activating) {
                 animationEdit.animationNodes.moveDownCircular(index)
-                addEditAnimation(animationEdit)
+                buildAddEditAnimationPage(animationEdit, onSave)
             }
 
             page.addEventListener("delete-animation-node-${index}", CustomUIEventBindingType.Activating) {
                 animationEdit.animationNodes.removeAt(index)
-                addEditAnimation(animationEdit)
+                buildAddEditAnimationPage(animationEdit, onSave)
             }
         }
 
@@ -94,7 +119,7 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
         page.open(store)
     }
 
-    fun addEditAnimationNode(animationNode: AnimationNode?, onSave: ((UIContext) -> Unit)? = null) {
+    fun buildAddEditAnimationNodePage(animationNode: AnimationNode?, onSave: ((UIContext) -> Unit)? = null) {
         var animationNodeEdit = animationNode;
 
         if (animationNodeEdit == null) {
@@ -123,7 +148,7 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
             dropdown.addEventListener(CustomUIEventBindingType.ValueChanged) { selectedValue ->
                 animationNodeEdit.stateFrames.add(selectedValue)
 
-                addEditAnimationNode(animationNodeEdit)
+                buildAddEditAnimationNodePage(animationNodeEdit, onSave)
             }
         }
 
@@ -141,7 +166,7 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
             page.addEventListener("delete-state-frame-${stateFrame}", CustomUIEventBindingType.Activating) {
                 animationNodeEdit.stateFrames.remove(stateFrame)
 
-                addEditAnimationNode(animationNodeEdit)
+                buildAddEditAnimationNodePage(animationNodeEdit, onSave)
             }
         }
 
@@ -160,13 +185,23 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
         page.open(store)
     }
 
-    fun buildStateFramePage(onSave: ((UIContext) -> Unit)? = null) {
+    fun buildAddEditStateFramePage(stateFrame: StateFrame?, onSave: ((UIContext) -> Unit)? = null) {
+        var stateFrameEdit = stateFrame;
+
+        if (stateFrame == null) {
+            stateFrameEdit =
+                StateFrame(playerRef.uuid, "","", "", 1)
+        }
+
         val config = configManager.load<MovingHeadConfig>()
         val sceneGroups = config.getSceneGroups(playerRef.uuid)
         val states = AnimationManager.getStates()
 
+        val templateProcessor = TemplateProcessor()
+            .setVariable("stateFrame", stateFrameEdit)
+
         val page = PageBuilder.pageForPlayer(playerRef)
-            .loadHtml("Pages/CreateStateFrame.html")
+            .loadHtml("Pages/AddEditStateFrame.html", templateProcessor)
 
         page.getById("sceneGroup", DropdownBoxBuilder::class.java).ifPresent { dropdown ->
             for (sceneGroup in sceneGroups) {
@@ -192,9 +227,12 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
                 playerRef.sendMessage(Message.translation("server.movingheads.stateframe.incomplete").withErrorPrefix())
             }
 
-            val stateFrame =
-                StateFrame(playerRef.uuid, name.get(), sceneGroupName.get(), state.get(), iterations.get().toInt())
-            config.stateFrames.add(stateFrame)
+            stateFrameEdit.name = name.get()
+            stateFrameEdit.sceneGroupName = sceneGroupName.get()
+            stateFrameEdit.state = state.get()
+            stateFrameEdit.iterations = iterations.get().toInt()
+
+            config.setStateFrame(stateFrameEdit)
             configManager.save(config)
 
             playerRef.sendMessage(
@@ -251,14 +289,20 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
             }
         }
 
-        // -- 2. StateFrames --
-        for (stateFrame in stateFrames) {
-            page.addEventListener("btn-add-stateframe", CustomUIEventBindingType.Activating) {
-                buildStateFramePage {
-                    buildMainPage("tab2")
-                }
+        page.addEventListener("btn-add-scenegroup", CustomUIEventBindingType.Activating) {
+            buildCreateSceneGroupPage {
+                buildMainPage("tab1")
             }
+        }
 
+        // -- 2. StateFrames --
+        page.addEventListener("btn-add-stateframe", CustomUIEventBindingType.Activating) {
+            buildAddEditStateFramePage(null) {
+                buildMainPage("tab2")
+            }
+        }
+
+        for (stateFrame in stateFrames) {
             page.addEventListener(
                 "delete-state-frame-${stateFrame.name}",
                 CustomUIEventBindingType.Activating
@@ -278,16 +322,21 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
                     ctx.updatePage(true)
                 }
             }
+
+            page.addEventListener("edit-state-frame-${stateFrame.name}", CustomUIEventBindingType.Activating) { _, ctx ->
+                buildAddEditStateFramePage(stateFrame) {
+                    buildMainPage("tab2")
+                }
+            }
         }
 
         // -- 3. AnimationNodes --
-        for (animationNode in animationNodes) {
-            page.addEventListener("btn-add-animationnode", CustomUIEventBindingType.Activating) { data, ctx ->
-                addEditAnimationNode(null) {
-                    buildMainPage("tab3")
-                }
+        page.addEventListener("btn-add-animationnode", CustomUIEventBindingType.Activating) { data, ctx ->
+            buildAddEditAnimationNodePage(null) {
+                buildMainPage("tab3")
             }
-
+        }
+        for (animationNode in animationNodes) {
             // delete
             page.addEventListener(
                 "animation-node-delete-${animationNode.name}",
@@ -314,18 +363,20 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
                 "animation-node-edit-${animationNode.name}",
                 CustomUIEventBindingType.Activating
             ) { _, ctx ->
-                addEditAnimationNode(animationNode)
+                buildAddEditAnimationNodePage(animationNode) {
+                    buildMainPage("tab3")
+                }
             }
         }
 
         // -- 4. Animation --
-        for (animation in animations) {
-            page.addEventListener("btn-add-animation", CustomUIEventBindingType.Activating) { data, ctx ->
-                addEditAnimation(null) {
-                    buildMainPage("tab4")
-                }
+        page.addEventListener("btn-add-animation", CustomUIEventBindingType.Activating) { data, ctx ->
+            buildAddEditAnimationPage(null) {
+                buildMainPage("tab4")
             }
+        }
 
+        for (animation in animations) {
             // delete
             page.addEventListener("animation-delete-${animation.name}", CustomUIEventBindingType.Activating) { _, ctx ->
                 val animationNodeToDelete = config.getAnimation(playerRef.uuid, animation.name)
@@ -346,11 +397,12 @@ class AnimationUi(val store: Store<EntityStore?>, val playerRef: PlayerRef) {
 
             // edit
             page.addEventListener("animation-edit-${animation.name}", CustomUIEventBindingType.Activating) { _, ctx ->
-                addEditAnimation(animation)
+                buildAddEditAnimationPage(animation) {
+                    buildMainPage("tab4")
+                }
             }
         }
 
         page.open(store)
     }
-
 }
