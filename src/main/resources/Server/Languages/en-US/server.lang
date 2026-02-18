@@ -3,104 +3,116 @@ items.Moving_Head_2b_right.name = Moving Head Right (2m)
 items.Moving_Head_4b_right.name = Moving Head Right (4m)
 items.Moving_Head_6b_right.name = Moving Head Right (6m)
 items.Moving_Head_12b_right.name = Moving Head Right (12m)
+items.Moving_Head_72b_right.name = Moving Head Right (72m)
+items.Moving_Head_96b_right.name = Moving Head Right (96m)
 
 items.Moving_Head_2b_left.name = Moving Head Left (2m)
 items.Moving_Head_4b_left.name = Moving Head Left (4m)
 items.Moving_Head_6b_left.name = Moving Head Left (6m)
 items.Moving_Head_12b_left.name = Moving Head Left (12m)
+items.Moving_Head_72b_left.name = Moving Head Left (72m)
+items.Moving_Head_96b_left.name = Moving Head Left (96m)
 
 items.Moving_Head.startmove = Movement
 
 items.Moving_Speaker.name = Speaker
+items.Moving_Truss.name = Truss
+items.Moving_Truss_Connector.name = Truss Connector
+items.Moving_Truss_Corner.name = Truss Corner
+items.Moving_Truss_Corner_Ninety.name = Truss Corner 90°
+items.Moving_Truss_Corner_OneEighty.name = Truss Corner 180°
+items.Moving_Truss_Corner_Spot.name = Truss Spot Mount
 
 # === Animation ===
 movingheads.animation.name = Animation Management
-movingheads.animation.add = Add animation node to animation
-movingheads.animation.added = Animation node {animationName} was assigned to animation {animationNodeName}!
-movingheads.animation.created = Animation {name} was created!
+movingheads.animation.add = Add Animationnode to animation
+movingheads.animation.added = Animationnode {animationName} has been assigned to animation {animationNodeName}!
+movingheads.animation.created = Animation {name} has been created!
 movingheads.animation.create = Create new animation
 movingheads.animation.delete = Delete animation
 movingheads.animation.deleted = Animation {name} deleted!
-movingheads.animation.list = Show list of your animations
+movingheads.animation.list = Show a list of your animations
 movingheads.animation.list.yours = Your animations:
 movingheads.animation.play = Play animation
-movingheads.animation.playing = Animation {animationName} is playing.
+movingheads.animation.playing = Playing animation {animationName}.
 movingheads.animation.play.notfound = Animation could not be found!
-movingheads.animation.remove = Remove animation node from animation
-movingheads.animation.removes = Animation node {animationNodeName} was removed from animation {animationName}!
+movingheads.animation.remove = Remove Animationnode from animation
+movingheads.animation.removes = Animationnode {animationNodeName} has been removed from animation {animationName}!
 movingheads.animation.stop = Stop animation
 movingheads.animation.stopped = Your running animation has been stopped!
-movingheads.animation.onlyone = You can only play one animation!
-movingheads.animation.saved = Animation {animationName} was saved!
+movingheads.animation.onlyone = You can only play one animation at a time!
+movingheads.animation.saved = Animation {animationName} has been saved!
 
 # === Animationnode ===
-movingheads.animationnode.manage = Manage animation nodes
-movingheads.animationnode.add = Assign state frame to animation node
-movingheads.animationnode.added = State frame {stateFrameName} was assigned to animation node {animationNodeName}!
-movingheads.animationnode.create = Create new animation node
-movingheads.animationnode.created = Animation node {animationNode} was created!
-movingheads.animationnode.saved = Animation node {animationNode} was saved!
-movingheads.animationnode.delete = Delete animation node
-movingheads.animationnode.deleted = Animation node {animationNodeName} was deleted!
-movingheads.animationnode.list = List of your animation nodes
-movingheads.animationnode.yours = Your animation nodes:
-movingheads.animationnode.play = Play animation node
-movingheads.animationnode.notfound = Animation node {animationNodeName} was not found!
-movingheads.animationnode.playing = Animation node {animationNodeName} is playing.
-movingheads.animationnode.remove = Remove state frame from animation node
-movingheads.animationnode.removed = State frame {stateFrameName} from animation node {animationNodeName} removed!
-movingheads.animationnode.addsound = Add sound to animation node
-movingheads.animationnode.soundadded = Sound successfully added to animation node {animationNodeName}!
+movingheads.animationnode.manage = Manage Animationnodes
+movingheads.animationnode.add = Assign Stateframe to an Animationnode
+movingheads.animationnode.added = Stateframe {stateFrameName} has been assigned to Animationnode {animationNodeName}!
+movingheads.animationnode.create = Create new Animationnode
+movingheads.animationnode.created = Animationnode {animationNode} has been created!
+movingheads.animationnode.saved = Animationnode {animationNode} has been saved!
+movingheads.animationnode.delete = Delete Animationnode
+movingheads.animationnode.deleted = Animationnode {animationNodeName} has been deleted!
+movingheads.animationnode.list = List of your AnimationNodes
+movingheads.animationnode.yours = Your AnimationNodes:
+movingheads.animationnode.play = Play Animationnode
+movingheads.animationnode.notfound = Animationnode {animationNodeName} was not found!
+movingheads.animationnode.playing = Playing Animationnode {animationNodeName}.
+movingheads.animationnode.remove = Remove Stateframe from Animationnode
+movingheads.animationnode.removed = Stateframe {stateFrameName} removed from Animationnode {animationNodeName}!
+movingheads.animationnode.addsound = Add sound to Animationnode
+movingheads.animationnode.soundadded = Sound successfully added to Animationnode {animationNodeName]!
 
 # === Scenegroup ===
 movingheads.scenegroup.name = Scene Name
-movingheads.scenegroup.add = Add block to scene group
-movingheads.scenegroup.manage = Manage scene groups
-movingheads.scenegroup.yours = Your scene groups:
-movingheads.scenegroup.create = Create new scene group
-movingheads.scenegroup.created = Scene group {name} successfully created!
-movingheads.scenegroup.delete = Delete scene group
-movingheads.scenegroup.deleted = Scene group {name} deleted!
-movingheads.scenegroup.list = List of your scene groups
+movingheads.scenegroup.add = Add block to Scene Group
+movingheads.scenegroup.manage = Manage Scene Groups
+movingheads.scenegroup.yours = Your Scene Groups:
+movingheads.scenegroup.create = Create new Scene Group
+movingheads.scenegroup.created = Scene Group {name} successfully created!
+movingheads.scenegroup.delete = Delete Scene Group
+movingheads.scenegroup.deleted = Scene Group {name} deleted!
+movingheads.scenegroup.list = List of your Scene Groups
 movingheads.scenegroup.block.add = Block X:{x}, Y:{y}, Z:{z} added!
 movingheads.scenegroup.block.remove = Block X:{x}, Y:{y}, Z:{z} removed!
-movingheads.scenegroup.warning.noname = No scene group specified!
-movingheads.scenegroup.warning = No scene group with this name exists!
-movingheads.scenegroup.show = Selected blocks of the scene group are marked in blue.
-movingheads.scenegroup.nonexistent = This scene group does not exist!
-movingheads.scenegroup.remove = Remove block from scene group
-movingheads.scenegroup.play = Play scene group
-movingheads.scenegroup.playing = Scene group {name} is playing.
+movingheads.scenegroup.warning.noname = No Scene Group specified!
+movingheads.scenegroup.warning = No Scene Group with this name exists!
+movingheads.scenegroup.show = Selected blocks of the Scene Group are marked in blue.
+movingheads.scenegroup.nonexistent = This Scene Group does not exist!
+movingheads.scenegroup.remove = Remove block from Scene Group
+movingheads.scenegroup.play = Play Scene Group
+movingheads.scenegroup.playing = Playing Scene Group {name}.
 
 # === StateFrame ===
-movingheads.stateframe.manage = Manage state frames
-movingheads.stateframe.create = Create state frame
-movingheads.stateframe.created = State frame {name} created!
-movingheads.stateframe.delete = Delete state frame
-movingheads.stateframe.deleted = State frame {name} deleted!
-movingheads.stateframe.list = List of your state frames
-movingheads.stateframe.yours = Your state frames:
+movingheads.stateframe.manage = Manage Stateframes
+movingheads.stateframe.create = Create Stateframe
+movingheads.stateframe.created = Stateframe {name} created!
+movingheads.stateframe.delete = Delete Stateframe
+movingheads.stateframe.deleted = Stateframe {name} deleted!
+movingheads.stateframe.list = List of your Stateframes
+movingheads.stateframe.yours = Your Stateframes:
 
 movingheads.stateframe.incomplete = Not all values were specified!
-movingheads.warning.player = Only a player may execute this command!
+
+movingheads.warning.player = Only a player can execute this command!
 movingheads.warning.noblock = No block in range!
+
 
 # === Arguments ===
 movingheads.arg.animation.name = Animation Name
 
-movingheads.arg.animationnode.name = Animation node
+movingheads.arg.animationnode.name = Animationnode
 movingheads.arg.animationnode.wait = Wait time
-movingheads.arg.animationnode.add.name = Animation node to be assigned to this animation
+movingheads.arg.animationnode.add.name = Animationnode to be assigned to this animation
 movingheads.arg.animationnode.soundevent = Sound event to play
 
-movingheads.arg.stateframe.add.name = State frame to be assigned to an animation node
-movingheads.arg.stateframe.name = State frame
+movingheads.arg.stateframe.add.name = Stateframe to be assigned to an Animationnode
+movingheads.arg.stateframe.name = Stateframe
 movingheads.arg.statename.name = State
 movingheads.arg.iterations.name = Iterations
 
-movingheads.arg.scenegroup.name = Scene group
+movingheads.arg.scenegroup.name = Scene Group
 
 mh.commands = Moving Head Control
 mh.commands.help = Help: Shows how to proceed to create an animation
-mh.commands.gui = Management interface for animations
-mh.commands.help.text = The following steps are required to create an animation with moving heads:\n\n1. Create a scene group and add blocks to it: /mh sc\n2. Create a state frame, which assigns a block state to a scene group: /mh sf\n3. Create an animation node and assign your state frames to it. All assigned state frames play simultaneously: /mh ann\n4. Create an animation and assign your animation nodes to it. Animation nodes play sequentially: /mh an\n5. The animation can be started with /mh an play [AnimationName]
+mh.commands.gui = Management UI for animations
+mh.commands.help.text = The following steps are required to create an animation with Moving Heads:\n\n1. Create a Scene Group and add blocks to it: /mh sc\n2. Create a StateFrame; this assigns a block state to a Scene Group: /mh sf\n3. Create an AnimationNode and assign your StateFrames to it. All assigned StateFrames will play simultaneously: /mh ann\n4. Create an Animation and assign your AnimationNodes to it. AnimationNodes are played sequentially: /mh an\n5. Use /mh an play [AnimationName] to start the animation.
