@@ -1,7 +1,7 @@
 {
   "Group": "de.jerst",
   "Name": "MovingHeadsPlugin",
-  "Version": "1.0.0",
+  "Version": "0.3.0",
   "Description": "Adds working Moving Heads to the game",
   "Authors": [
     {

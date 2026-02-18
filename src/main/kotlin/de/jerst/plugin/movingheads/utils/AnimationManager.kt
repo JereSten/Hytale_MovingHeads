@@ -113,6 +113,8 @@ object AnimationManager {
 
     /**
      * Stateduration in ms
+     * 1 s = 60 Ticks
+     * Formula: duration / 60 * 1000
      */
     fun getStateDuration(stage: String): Long {
         when (stage) {
@@ -126,6 +128,12 @@ object AnimationManager {
             "Down" -> return 3500L
             "Up" -> return 3000L
             "UpDownOne" -> return 12000L
+            "Background_Center" -> return 79883L
+            "Round_One" -> return 80000L
+            "Forward_Backward" -> return 40000L
+            "Background_Show_One" -> return 32133L
+            "FrontShow" -> return 55083L
+            "IntroSide2" -> return 4500L
             else -> {}
         }
         return 0
@@ -133,9 +141,22 @@ object AnimationManager {
 
     fun getStates(): List<String> {
         return listOf(
-            "Off", "On", "IntroSide", "IntroStage",
-            "OutroStage", "PartyOne", "PartyTwo",
-            "Down", "Up", "UpDownOne"
+            "Off",
+            "On",
+            "IntroSide",
+            "IntroSide2",
+            "IntroStage",
+            "OutroStage",
+            "PartyOne",
+            "PartyTwo",
+            "Down",
+            "Up",
+            "UpDownOne",
+            "Background_Center",
+            "Round_One",
+            "Forward_Backward",
+            "Background_Show_One",
+            "FrontShow"
         )
     }
 }

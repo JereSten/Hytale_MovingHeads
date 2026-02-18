@@ -3,15 +3,25 @@ items.Moving_Head_2b_right.name = Moving Head Rechts (2m)
 items.Moving_Head_4b_right.name = Moving Head Rechts (4m)
 items.Moving_Head_6b_right.name = Moving Head Rechts (6m)
 items.Moving_Head_12b_right.name = Moving Head Rechts (12m)
+items.Moving_Head_72b_right.name = Moving Head Rechts (72m)
+items.Moving_Head_96b_right.name = Moving Head Rechts (96m)
 
 items.Moving_Head_2b_left.name = Moving Head Links (2m)
 items.Moving_Head_4b_left.name = Moving Head Links (4m)
 items.Moving_Head_6b_left.name = Moving Head Links (6m)
 items.Moving_Head_12b_left.name = Moving Head Links (12m)
+items.Moving_Head_72b_left.name = Moving Head Links (72m)
+items.Moving_Head_96b_left.name = Moving Head Links (96m)
 
 items.Moving_Head.startmove = Bewegung
 
 items.Moving_Speaker.name = Lautsprecher
+items.Moving_Truss.name = Traverse
+items.Moving_Truss_Connector.name = Traverse Verbindung
+items.Moving_Truss_Corner.name = Traverse Ecke
+items.Moving_Truss_Corner_Ninety.name = Traverse Ecke 90°
+items.Moving_Truss_Corner_OneEighty.name = Traverse Ecke 180°
+items.Moving_Truss_Corner_Spot.name = Traverse Spot-Halter
 
 # === Animation ===
 movingheads.animation.name = Verwaltung der Animationen

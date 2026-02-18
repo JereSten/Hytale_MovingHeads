@@ -30,6 +30,7 @@
     ]
   },
   "BlockType": {
+    "HitboxType": "Moving_Head",
     "Material": "Solid",
     "DrawType": "Model",
     "Flags": {},
@@ -117,6 +118,54 @@
         "UpDownOne": {
           "CustomModelAnimation": "Blocks/Animations/updown_1.blockyanim",
           "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Background_Center": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/background_center_right.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Round_One": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/round_one_right.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Forward_Backward": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/forward_backward.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Background_Show_One": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/background_show_one_right.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "IntroSide2": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/intro_side_2_right.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "FrontShow": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/front_show_right.blockyanim",
           "Light": {
             "Color": "#a98"
           }

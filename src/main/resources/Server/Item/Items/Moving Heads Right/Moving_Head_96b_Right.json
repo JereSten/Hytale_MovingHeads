@@ -1,38 +1,39 @@
 {
   "Parent": "Moving_Head_2b_Right",
   "TranslationProperties": {
-    "Name": "server.items.Moving_Head_6b_right.name"
+    "Name": "server.items.Moving_Head_96b_right.name"
   },
   "BlockType": {
-    "CustomModel": "Blocks/Models/Spot.blockymodel",
+    "HitboxType": "Moving_Head_Big",
+    "CustomModel": "Blocks/Models/Spot_big.blockymodel",
     "CustomModelTexture": [
       {
-        "Texture": "BlockTextures/spot_6b.png"
+        "Texture": "BlockTextures/spot_big.png"
       }
     ],
     "State": {
       "Definitions": {
         "Off": {
           "InteractionHint": "server.items.Moving_Head.startmove",
-          "CustomModel": "Blocks/Models/Spot.blockymodel"
+          "CustomModel": "Blocks/Models/Spot_big.blockymodel"
         },
         "On": {
           "InteractionHint": "server.items.Moving_Head.startmove",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "IntroSide": {
           "CustomModelAnimation": "Blocks/Animations/intro_side_right.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "IntroStage": {
           "CustomModelAnimation": "Blocks/Animations/intro_stage_right.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
@@ -43,42 +44,42 @@
         },
         "PartyOne": {
           "CustomModelAnimation": "Blocks/Animations/party_1_right.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "PartyTwo": {
           "CustomModelAnimation": "Blocks/Animations/party_2_right.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "Down": {
           "CustomModelAnimation": "Blocks/Animations/down.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "Up": {
           "CustomModelAnimation": "Blocks/Animations/up.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "UpDownOne": {
           "CustomModelAnimation": "Blocks/Animations/updown_1.blockyanim",
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "Light": {
             "Color": "#a98"
           }
         },
         "Background_Center": {
           "InteractionHint": null,
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "CustomModelAnimation": "Blocks/Animations/background_center_right.blockyanim",
           "Light": {
             "Color": "#a98"
@@ -86,7 +87,7 @@
         },
         "Round_One": {
           "InteractionHint": null,
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "CustomModelAnimation": "Blocks/Animations/round_one_right.blockyanim",
           "Light": {
             "Color": "#a98"
@@ -94,7 +95,7 @@
         },
         "Forward_Backward": {
           "InteractionHint": null,
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "CustomModelAnimation": "Blocks/Animations/forward_backward.blockyanim",
           "Light": {
             "Color": "#a98"
@@ -102,7 +103,7 @@
         },
         "Background_Show_One": {
           "InteractionHint": null,
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "CustomModelAnimation": "Blocks/Animations/background_show_one_right.blockyanim",
           "Light": {
             "Color": "#a98"
@@ -110,7 +111,7 @@
         },
         "IntroSide2": {
           "InteractionHint": null,
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "CustomModelAnimation": "Blocks/Animations/intro_side_2_right.blockyanim",
           "Light": {
             "Color": "#a98"
@@ -118,7 +119,7 @@
         },
         "FrontShow": {
           "InteractionHint": null,
-          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModel": "Blocks/Models/Spot_on_96b.blockymodel",
           "CustomModelAnimation": "Blocks/Animations/front_show_right.blockyanim",
           "Light": {
             "Color": "#a98"

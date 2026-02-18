@@ -1,0 +1,77 @@
+{
+  "ItemLevel": 15,
+  "MaxStack": 100,
+  "Icon": "Icons/ItemsGenerated/Moving_Head_Truss_Connector.png",
+  "Categories": [
+    "Blocks.Deco"
+  ],
+  "Set": "Moving Heads",
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Bar_Iron",
+        "Quantity": 8
+      }
+    ],
+    "OutputQuantity": 1,
+    "TimeSeconds": 0,
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ]
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "VariantRotation": "All",
+    "Textures": [
+      {
+        "All": "BlockTextures/truss.png",
+        "Weight": 1
+      }
+    ],
+    "ParticleColor": "#4b4b4b",
+    "BlockSoundSetId": "Metal",
+    "CustomModel": "Blocks/Models/Truss_Connector.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "BlockTextures/truss.png"
+      }
+    ],
+    "FlipType": "Symmetric",
+    "PlacementSettings": {
+      "BlockPreviewVisibility": "AlwaysVisible",
+      "RotationMode": "FacingPlayer",
+      "WallPlacementOverrideBlockId": "Moving_Head_Truss_Horizontal"
+    },
+    "CubeShadingMode": "Standard"
+  },
+  "ItemSoundSetId": "ISS_Items_Metal",
+  "IconProperties": {
+    "Scale": 0.5,
+    "Rotation": [
+      16,
+      58,
+      22.5
+    ],
+    "Translation": [
+      1,
+      -16
+    ]
+  },
+  "TranslationProperties": {
+    "Name": "server.items.Moving_Truss_Connector.name"
+  },
+  "PlayerAnimationsId": "Block"
+}

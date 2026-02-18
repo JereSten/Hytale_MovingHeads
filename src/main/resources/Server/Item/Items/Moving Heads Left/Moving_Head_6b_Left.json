@@ -30,6 +30,13 @@
             "Color": "#a98"
           }
         },
+        "IntroSide2": {
+          "CustomModelAnimation": "Blocks/Animations/intro_side_2_left.blockyanim",
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
         "IntroStage": {
           "CustomModelAnimation": "Blocks/Animations/intro_stage_left.blockyanim",
           "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
@@ -72,6 +79,46 @@
         "UpDownOne": {
           "CustomModelAnimation": "Blocks/Animations/updown_1.blockyanim",
           "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Background_Center": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/background_center_left.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Round_One": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/round_one_left.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Forward_Backward": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/forward_backward.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "Background_Show_One": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/background_show_one_left.blockyanim",
+          "Light": {
+            "Color": "#a98"
+          }
+        },
+        "FrontShow": {
+          "InteractionHint": null,
+          "CustomModel": "Blocks/Models/Spot_on_6b.blockymodel",
+          "CustomModelAnimation": "Blocks/Animations/front_show_left.blockyanim",
           "Light": {
             "Color": "#a98"
           }
