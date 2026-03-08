@@ -21,18 +21,16 @@ custom music to the animation!
 Demo-Video:
 
 [![Demo Video](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/watch?v=oHK8FP-96g4)
-## Provided Blocks
+## 💎 Features
 
-### Moving Heads
-
-This mod provides 8 types of moving heads in two different variations:
-* Different beam ranges: 2, 4, 6 or 12 blocks
-* Left or right spot. The animations for the left and right spots are mirrored. Place them accordingly on the left 
-  and right sides of your stage to create a mirrored scene like shown in the video above
-
-### Misc
-
-Non-functionable stage speaker.
+*   🏗️ **Moving Heads**
+  *   📏 **Different beam ranges:** 2, 4, 6, 12, 72 or 96 blocks
+  *   🔄 **Two-sided spots:** Left and Right. The animations for the left and right spots are mirrored. Place them accordingly on the left and right sides of your center area to create a mirrored scene (as shown in the video above).
+*   🔊 **Speaker:** Decoration Block
+*   🎬 **Animations:**
+  *   🎞️ **13 predefined Block-Animations:** Combine them to create your own custom amazing shows!
+  *   🎵 **Sound Integration:** Play sounds to perfectly sync with your light sequences!
+*   🌐 **Available Languages:** English, German
 
 ## Usage
 
@@ -70,48 +68,41 @@ AnimationTrack
 
 To create a new animation let's start from the uʍop ǝpᴉsdn 🔦🚲:
 
-The main command to create animations is `/mh gui`.
-The four tabs/steps in the gui guide you trough the process creating a new animation.
+The main command to create animations is `/mh gui`. The four tabs/steps in the gui guide you trough the process creating a new animation.
 
-Following guide shows only a small set of available commands for each step. Refer to the `/help` command to 
-familiarise yourself with all the available commands.
+Following guide shows only a small set of available commands for each step. Refer to the `/help` command to familiarise yourself with all the available commands.
 
-#### 1. Create new SceneGroup
+#### 1\. Create new SceneGroup
 
-A SceneGroup is a 'container' that can hold multiple blocks. For example, you could put all the spots on the stage 
-in one group and put the rest in another 'side' group. 
+A SceneGroup is a 'container' that can hold multiple blocks. For example, you could put all the spots on the stage in one group and put the rest in another 'side' group.
 
 Create a new scene group directly in the gui clicking the "plus" button.
 
-Next, we focus on each spot on the stage in turn and add them with the command `/mh sc add stage`. This command adds 
-the block you are looking and to the group.
+Next, we focus on each spot on the stage in turn and add them with the command `/mh sc add stage`. This command adds the block you are looking at to the group.
 
 To view all added block type `/mh sc show stage`. All block will be shown up using blue particles.
 
 Let's test! `/mh sc play stage Up`
 
-#### 2. Create a new StateFrame
+#### 2\. Create a new StateFrame
 
-A Stateframe combines states and SceneGroups. It determines which animation is played for each Scenegroup. You can 
-create multiple reusable StateFrames, such as 'stageUp', 'stageDown' and 'stageParty1'.
+A Stateframe combines states and SceneGroups. It determines which animation is played for each Scenegroup. You can create multiple reusable StateFrames, such as 'stageUp', 'stageDown' and 'stageParty1'.
 
 If you want the animation repeat for X times make use of the "Iterations"-Property.
 
-#### 3. Create AnimationNode
+#### 3\. Create AnimationNode
 
-An AnimationNode plays all the added StateFrames simultaneously.
-So let's create a new one and add the StateFrames that we have made using the dropdown on top of the Save-Button.
+An AnimationNode plays all the added StateFrames simultaneously. So let's create a new one and add the StateFrames that we have made using the dropdown on top of the Save-Button.
 
 The selected will be set at the same time to their predefined SceneGroups.
 
 Let's test! `/mh annode play [name]`
 
-#### 4. Create Animation
+#### 4\. Create Animation
 
-Almost done! Finally we have to define a new Animation. 
+Almost done! Finally we have to define a new Animation.
 
-Now add all the AnimationNodes you want. Animations play each node sequentially, while state frames within an 
-AnimationNode are played in parallel. This allows for highly flexible animation combinations.
+Now add all the AnimationNodes you want. Animations play each node sequentially, while state frames within an AnimationNode are played in parallel. This allows for highly flexible animation combinations.
 
 Let the party begin! `/mh an play demo`
 
@@ -119,44 +110,26 @@ Let the party begin! `/mh an play demo`
 
 Let's add some nice music to the animation: `/mh annode addsound Custom_Music 10 10 10`
 
-### Animations
+## Animations
 
-The animations are initiated by block state changes. Currently we have 8 animations and 2 additional states without 
-an animation.
+The animations are initiated by block state changes. Currently we have 11 animations and 2 additional states without an animation.
 
-#### 🌑 Static States
-
-##### 🔘 Off
-* **Description:** The silent state. No light, no movement.
-
-##### 💡 On
-* **Description:** Static light with beam visible.
-
-#### Animations
-
-##### IntroSide
-* **Description:** Introductory movement sweeping into the field of view from the left side.
-
-##### IntroStage
-* **Description:** Standard entrance animation for stage-center alignment.
-
-##### OutroStage
-* **Description:** Conclusion sequence based on the IntroStage configuration.
-
-##### PartyOne
-* **Description:** Movement sequence designed for active show phases.
-
-##### PartyTwo
-* **Description:** Movement sequence designed for active show phases.
-
-##### Down
-* **Description:** Linear downward movement of the head.
-
-##### Up
-* **Description:** Linear upward movement of the head.
-
-##### UpDownOne
-* **Description:** Smooth Up and Down movement.
+*   Off
+*   On
+*   IntroSide
+*   IntroSide2
+*   IntroStage
+*   OutroStage
+*   PartyOne
+*   PartyTwo
+*   Down
+*   Up
+*   UpDownOne
+*   Background\_Center
+*   Round\_One
+*   Forward\_Backward
+*   Background\_Show\_One
+*   FrontShow
 
 ## Installation
 
