@@ -10,6 +10,7 @@ version = '0.3.0'
 repositories {
     mavenCentral()
     maven { url "https://www.cursemaven.com" }
+    maven { url "https://maven.hytale.com/release"}
     flatDir {
         dirs 'libs'
     }
@@ -27,7 +28,7 @@ tasks.withType(JavaCompile).configureEach {
 
 dependencies {
     // Libraries
-    compileOnly name: 'HytaleServer'
+    implementation("com.hypixel.hytale:Server:2026.03.26-89796e57b")
     
     // Tests
     testImplementation platform('org.junit:junit-bom:5.10.0')
