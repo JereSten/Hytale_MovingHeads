@@ -2,7 +2,7 @@ package de.jerst.plugin.movingheads.commands.animationnode
 
 import com.hypixel.hytale.component.Ref
 import com.hypixel.hytale.component.Store
-import com.hypixel.hytale.math.vector.Vector3i
+import org.joml.Vector3i
 import com.hypixel.hytale.server.core.Message
 import com.hypixel.hytale.server.core.command.system.CommandContext
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg
@@ -42,9 +42,9 @@ class MovingHeadAnimationNodeAddSoundCommand :
         world: World,
         store: Store<EntityStore?>
     ) {
-        val animationNodeName = commandContext.get<String>(animationNodeNameArg)
-        val soundName = commandContext.get<String>(soundNameArg)
-        val soundPosition = commandContext.get<Vector3i>(positionArg)
+        val animationNodeName = commandContext.get(animationNodeNameArg)
+        val soundName = commandContext.get(soundNameArg)
+        val soundPosition = commandContext.get(positionArg)
 
         val config = configManager.load<MovingHeadConfig>()
 

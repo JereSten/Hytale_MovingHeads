@@ -1,11 +1,11 @@
 package de.jerst.plugin.movingheads.utils
 
 import com.hypixel.hytale.component.Store
-import com.hypixel.hytale.math.vector.Vector3i
 import com.hypixel.hytale.server.core.Message
 import com.hypixel.hytale.server.core.command.system.CommandContext
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import com.hypixel.hytale.server.core.util.TargetUtil
+import org.joml.Vector3i
 
 class MovingHeadCommandUtil {
     companion object {

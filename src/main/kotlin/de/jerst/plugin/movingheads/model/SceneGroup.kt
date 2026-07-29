@@ -1,7 +1,7 @@
 package de.jerst.plugin.movingheads.model
 
 
-import com.hypixel.hytale.math.vector.Vector3i
+import org.joml.Vector3i
 import java.util.*
 
 data class SceneGroup(

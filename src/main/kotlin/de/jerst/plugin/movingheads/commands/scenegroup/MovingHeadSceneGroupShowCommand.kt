@@ -16,6 +16,7 @@ import de.jerst.plugin.movingheads.utils.ConfigurationUtil
 import de.jerst.plugin.movingheads.model.MovingHeadConfig
 import de.jerst.plugin.movingheads.utils.withErrorPrefix
 import de.jerst.plugin.movingheads.utils.withPrefix
+import org.joml.Vector3d
 import javax.annotation.Nonnull
 
 
@@ -57,10 +58,11 @@ class MovingHeadSceneGroupShowCommand:
         }
 
         for (block in sceneGroup.blocks!!) {
-            val particlePos = block.toVector3d()
-            particlePos.x += 0.5
-            particlePos.y += 0.5
-            particlePos.z += 0.5
+            val particlePos = Vector3d(
+                block.x().toDouble() + 0.5,
+                block.y().toDouble() + 0.5,
+                block.z().toDouble() + 0.5
+            )
 
             ParticleUtil.spawnParticleEffect("MovingHead_Block_Indicator", particlePos, store)
         }

@@ -152,9 +152,12 @@ Don't forget to give the project a star! Thanks again!
 
 ## Build
 
-1. Create `libs`-Folder
-2. Add `HytaleServer.jar` to this directory
-3. Build with `gradle build`
+1. Clone the repository
+2. Build with the Gradle wrapper:
+   * Windows: `gradlew.bat build`
+   * Linux/macOS: `./gradlew build`
+
+The resulting plugin jar is created via the Shadow plugin and can be found in `build/libs/`.
 
 ## License
 
